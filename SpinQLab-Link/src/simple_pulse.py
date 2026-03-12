@@ -1,16 +1,19 @@
 from spinqlablink import SpinQLabLink, ExperimentType, Pulse
+from spinqlablink import print_graph
 
 def main():
     # Establish connection
-    spinqlablink = SpinQLabLink("192.168.9.121", 8181, "andreroque", "password")
-
+    spinqlablink = SpinQLabLink("192.168.4.34", 8181, "andreroque", "password")
+    spinqlablink.connect()
+    spinqlablink.wait_for_login()
+    
     try:
-        # Connect and login
-        if not spinqlablink.connect():
-            raise Exception("Connection failed")
+        # # Connect and login
+        # if not spinqlablink.connect():
+        #     raise Exception("Connection failed")
 
-        if not spinqlablink.wait_for_login():
-            raise Exception("Login failed")
+        # if not spinqlablink.wait_for_login():
+        #     raise Exception("Login failed")
 
         print("✓ Connection successful")
 
@@ -22,8 +25,8 @@ def main():
 
         # Set parameters
         parameters.pulses = [Pulse(path=0, width=40, amplitude=100, phase=90, detuning=0)]
-        parameters.freq_h = 37.852105
-        parameters.freq_p = 15.322872
+        parameters.freq_h = 27.852105
+        parameters.freq_p = 11.322872
         parameters.makePps = True
         parameters.samplePath = 0
         parameters.custom_freq = False
@@ -34,17 +37,15 @@ def main():
         print("✓ Experiment started")
 
         # Wait for completion
-        if spinqlablink.wait_for_experiment_completion():
-            print("✓ Experiment completed")
+        spinqlablink.wait_for_experiment_completion()
+        print("✓ Experiment completed")
 
-            # Get results
-            result = spinqlablink.get_experiment_result()
-            print(f"✓ Experiment status: {result['status']}")
+        # Get results
+        result = spinqlablink.get_experiment_result()
+        print(f"✓ Experiment status: {result.get('status', 'finished')}")
 
-            # Display results (optional)
-            # from examples.toolsfunc import print_graph
-            # print_graph(result["result"])
-
+        if result:
+            print_graph(result["result"])
         else:
             print("✗ Experiment timed out")
 

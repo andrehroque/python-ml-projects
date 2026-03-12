@@ -8,7 +8,7 @@ from spinqlablink import SpinQLabLink, ExperimentType, Pulse
 def rabi_oscillation_experiment():
     """Run a Rabi oscillation experiment using SpinQLabLink."""
     
-    spinqlablink = SpinQLabLink("192.168.9.134", 0000, "andreroque", "password")
+    spinqlablink = SpinQLabLink("192.168.4.34", 8181, "andreroque", "password")
     spinqlablink.connect()
     spinqlablink.wait_for_login()
     
@@ -22,8 +22,8 @@ def rabi_oscillation_experiment():
             # Register experiment
             _, exp_para = spinqlablink.register_experiment(ExperimentType.RABI_OSCILLATIONS)
             # Set parameters
-            exp_para.freq_h = 37.852105
-            exp_para.freq_p = 15.322872
+            exp_para.freq_h = 27.852105
+            exp_para.freq_p = 11.322872
             exp_para.makePps = True
             exp_para.samplePath = 0
             exp_para.custom_freq = False
