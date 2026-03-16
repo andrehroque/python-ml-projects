@@ -15,18 +15,20 @@ def main():
     
     # Circuit layer experiment creates pps automatically
 
-    using_pulse = False
-    pulse_sequence = load_pulses_from_json("pulses/pulseCNOT_0.2.json")
+    using_pulse = True
+    pulse_sequence = load_pulses_from_json("pulses/pulseCNOT_0.3.json")
+    pulse_sequence.insert(0,Pulse(path=1, width=80, amplitude=100, phase=90, detuning=0))
+    pulse_sequence.insert(0,Pulse(path=0, width=80, amplitude=100, phase=90, detuning=0))
 
     if using_pulse:
         exp_circuit_layer_para.pulses = pulse_sequence
-        # exp_circuit_layer_para.pulses = [Pulse(path=0, width = 0, amplitude = 0, phase = 0, detuning = 0)]
+        # exp_circuit_layer_para.pulses = [Pulse(path=0, width = 80, amplitude = 100, phase = 90, detuning = 0)]
     else:
         circuit = Circuit(2)
         # circuit << Gate(type='H', qubitIndex=0)
         circuit << Gate(type='X', qubitIndex=1)
         circuit << Gate(type='X', qubitIndex=0)
-        circuit << CustomGate(type='CNOT',customType='CNOT_custom_gate',qubitIndex=1,pulses=pulse_sequence)
+        circuit << CustomGate(type='X',customType='X_custom_gate',qubitIndex=1,pulses=pulse_sequence)
         circuit.print_circuit()
         exp_circuit_layer_para.set_circuit(circuit)
 

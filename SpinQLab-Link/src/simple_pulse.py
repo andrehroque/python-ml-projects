@@ -1,5 +1,6 @@
 from spinqlablink import SpinQLabLink, ExperimentType, Pulse
 from spinqlablink import print_graph
+from funcs import load_pulses_from_json
 
 def main():
     # Establish connection
@@ -22,13 +23,15 @@ def main():
             ExperimentType.NMR_PHENOMENON_AND_SIGNAL
         )
         print(f"✓ Experiment registered: {experiment.id}")
-
+        
+        pulse_sequence = load_pulses_from_json("pulses\pulseCNOT_0.4.json")
+        pulse_sequence.insert(0,Pulse(path=0, width=40, amplitude=100, phase=90, detuning=0))
         # Set parameters
-        parameters.pulses = [Pulse(path=0, width=40, amplitude=100, phase=90, detuning=0)]
+        parameters.pulses = pulse_sequence
         parameters.freq_h = 27.852105
         parameters.freq_p = 11.322872
         parameters.makePps = True
-        parameters.samplePath = 0
+        parameters.samplePath = 1
         parameters.custom_freq = False
         print("✓ Parameters set")
 
