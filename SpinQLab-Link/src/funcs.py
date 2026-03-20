@@ -76,3 +76,4 @@ def plot_pulse_from_json(json_file):
     cbar.set_label("Phase (deg)")
 
     plt.show()
+    

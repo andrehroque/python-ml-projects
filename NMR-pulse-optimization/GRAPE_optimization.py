@@ -221,7 +221,7 @@ def export_to_json_GRAPE_2channel(
     Rx_P = np.asarray(Rx_P).flatten()
     Ry_P = np.asarray(Ry_P).flatten()
 
-    dt = totalpulsewidth / slices
+    dt = totalpulsewidth / slices * 1e6
 
     channel1_pulses = []
     channel2_pulses = []

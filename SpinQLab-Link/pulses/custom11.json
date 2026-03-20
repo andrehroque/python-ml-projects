@@ -1,0 +1,38 @@
+{
+    "description": {
+        "TITLE": "custom pulse sequence for state 11",
+        "OWNER": "andreroque",
+        "DATE": "20-03-2026",
+        "FIDELITY": "",
+        "TOTALPULSEWIDTH": 40,
+        "SLICES": ""
+    },
+    "parameters": {
+        "offset": [
+            {
+                "channel1_pulsefre_offset": 0,
+                "channel1_framefre_offset": 0,
+                "channel2_pulsefre_offset": 0,
+                "channel2_framefre_offset": 0
+            }
+        ]
+    },
+    "pulse": {
+        "channel1_pulse": [
+            {
+                "detuning": 0,
+                "phase": 90,
+                "amplitude": 100,
+                "width": 40
+            }
+        ],
+        "channel2_pulse": [
+            {
+                "detuning": 0,
+                "phase": 90,
+                "amplitude": 100,
+                "width": 40
+            }
+        ]
+    }
+}
