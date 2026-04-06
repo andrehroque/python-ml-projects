@@ -1,4 +1,5 @@
 import numpy as np
+import os
 import scipy
 import json
 import matplotlib.pyplot as plt
@@ -6,6 +7,7 @@ import matplotlib.colors as mcolors
 from mpl_toolkits.mplot3d import Axes3D
 from datetime import datetime
 from qiskit.quantum_info import Pauli
+from numba import njit
 
 np.set_printoptions(linewidth=200, precision=4, suppress=True)
 
@@ -44,11 +46,7 @@ U_cz = np.array([[1,0,0,0],
                  [0,0,0,-1]])
 
 
-
- 
 # Gradient Ascent - GRAPE - different channels
-
-# a bit different from the basic SMP, the parameter phi is omitted, collapsed into the amplitude which now differs for each orthogonal direction x, y
 
 # constants
 n = 2
@@ -57,45 +55,66 @@ d = 2**n
 #wP = 11e6
 #w1H = w1P after calibration
 w1_max = 6250
+J = 696
 
 H_x_H = 2*np.pi*w1_max*(Ix1)
 H_x_P = 2*np.pi*w1_max*(Ix2)
 H_y_H = 2*np.pi*w1_max*(Iy1)
 H_y_P = 2*np.pi*w1_max*(Iy2)
+ZZ = np.kron(Z, Z)
+H_J = 2*np.pi*J*(ZZ/4)
 
 # H_0 = 0 because working on resonance. Only include when detuning or counteracting chemical shift mismatch
 
-def p_calc_2channel(Rx_H, Ry_H, Rx_P, Ry_P, U_target, J, T, N):
+@njit
+def fast_expm(H, dt):
+    w, v = np.linalg.eigh(H)
+    exp_diag = np.exp(-1j * w * dt)
+    return v @ np.diag(exp_diag) @ v.conj().T
+
+@njit
+def p_calc_2channel(Rx_H, Ry_H, Rx_P, Ry_P, U_target, J, T, N,
+                    H_x_H, H_y_H, H_x_P, H_y_P, H_J):
     """
     GRAPE algorithm backwards propagation calculation.
-    """        
-    P_list = []
+    """
+    d = 4
+    P_list = np.zeros((N, d, d), dtype=np.complex128)
     P = U_target.copy()
-    dt = T/N
-    H_J = 2*np.pi*J*(np.kron(Z,Z)/4)
-    
-    for k in reversed(range(N)):
-        H = H_J + Rx_H[k]*H_x_H + Ry_H[k]*H_y_H + Rx_P[k]*H_x_P + Ry_P[k]*H_y_P
-        Uk = scipy.linalg.expm(-1j * H * dt)
+    dt = T / N
+
+    for k in range(N-1, -1, -1):
+        H = H_J.copy()
+        H += Rx_H[k]*H_x_H
+        H += Ry_H[k]*H_y_H
+        H += Rx_P[k]*H_x_P
+        H += Ry_P[k]*H_y_P
+        Uk = fast_expm(H, dt)
         P = Uk.conj().T @ P
-        P_list.insert(0, P)
+        P_list[k] = P
 
     return P_list
 
-def x_calc_2channel(Rx_H, Ry_H, Rx_P, Ry_P, J, T, N):
+@njit
+def x_calc_2channel(Rx_H, Ry_H, Rx_P, Ry_P, J, T, N,
+                    H_x_H, H_y_H, H_x_P, H_y_P, H_J):
     """
     GRAPE algorithm forwards propagation calculation.
-    """    
-    X_list = []
-    U = np.eye(d, dtype=complex)
-    dt = T/N
-    H_J = 2*np.pi*J*(np.kron(Z,Z)/4)
-    
+    """  
+    d = 4
+    X_list = np.zeros((N, d, d), dtype=np.complex128)
+    U = np.eye(d, dtype=np.complex128)
+    dt = T / N
+
     for k in range(N):
-        H = H_J + Rx_H[k]*H_x_H + Ry_H[k]*H_y_H + Rx_P[k]*H_x_P + Ry_P[k]*H_y_P
-        Uk = scipy.linalg.expm(-1j * H * dt)
+        H = H_J.copy()
+        H += Rx_H[k]*H_x_H
+        H += Ry_H[k]*H_y_H
+        H += Rx_P[k]*H_x_P
+        H += Ry_P[k]*H_y_P
+        Uk = fast_expm(H, dt)
         U = Uk @ U
-        X_list.append(U)
+        X_list[k] = U
 
     return X_list, U
 
@@ -103,79 +122,70 @@ def fidelity_grape(U, U_target):
     phi = np.trace(U_target.conj().T @ U)
     return np.abs(phi)**2/d**2
 
-def grape_grad_2channel(Rx_H, Ry_H, Rx_P, Ry_P, U_target, J, T, N):
+@njit
+def clip_vector(Rx, Ry, max_norm=1.0):
+    norm = np.sqrt(Rx**2 + Ry**2)
+    scale = np.maximum(1.0, norm / max_norm)
+    return Rx / scale, Ry / scale
+
+@njit
+def grape_grad_2channel(Rx_H, Ry_H, Rx_P, Ry_P, U_target, J, T, N,
+                        H_x_H, H_y_H, H_x_P, H_y_P, H_J):
     """
     GRAPE algorithm gradient calculation.
     """
-    
-    X_list, U_final = x_calc_2channel(Rx_H, Ry_H, Rx_P, Ry_P, J, T, N)
-    P_list = p_calc_2channel(Rx_H, Ry_H, Rx_P, Ry_P, U_target, J, T, N)
-    dt = T/N
-    
+    d = 4
+    dt = T / N
+    X_list, U_final = x_calc_2channel(Rx_H, Ry_H, Rx_P, Ry_P, J, T, N,
+                                      H_x_H, H_y_H, H_x_P, H_y_P, H_J)
+    P_list = p_calc_2channel(Rx_H, Ry_H, Rx_P, Ry_P, U_target, J, T, N,
+                             H_x_H, H_y_H, H_x_P, H_y_P, H_J)
+
     phi = np.trace(U_target.conj().T @ U_final)
-    F0 = fidelity_grape(U_final, U_target)
-    
+    F0 = (np.abs(phi)**2) / (d**2)
+
     grad_Rx_H = np.zeros(N)
     grad_Ry_H = np.zeros(N)
     grad_Rx_P = np.zeros(N)
     grad_Ry_P = np.zeros(N)
-    
+
     for k in range(N):
         Xk = X_list[k]
         Pk = P_list[k]
-        
-        dX_Rx_H = -1j * dt * H_x_H @ Xk
-        dX_Ry_H = -1j * dt * H_y_H @ Xk
-        dX_Rx_P = -1j * dt * H_x_P @ Xk
-        dX_Ry_P = -1j * dt * H_y_P @ Xk
 
-        grad_Rx_H[k] = 2 * np.real(
-            np.trace(Pk.conj().T @ dX_Rx_H) * np.conj(phi)
-        )
+        dX_Rx_H = -1j * dt * (H_x_H @ Xk)
+        dX_Ry_H = -1j * dt * (H_y_H @ Xk)
+        dX_Rx_P = -1j * dt * (H_x_P @ Xk)
+        dX_Ry_P = -1j * dt * (H_y_P @ Xk)
 
-        grad_Ry_H[k] = 2 * np.real(
-            np.trace(Pk.conj().T @ dX_Ry_H) * np.conj(phi)
-        )
+        grad_Rx_H[k] = 2 * np.real(np.trace(Pk.conj().T @ dX_Rx_H) * np.conj(phi))
+        grad_Ry_H[k] = 2 * np.real(np.trace(Pk.conj().T @ dX_Ry_H) * np.conj(phi))
+        grad_Rx_P[k] = 2 * np.real(np.trace(Pk.conj().T @ dX_Rx_P) * np.conj(phi))
+        grad_Ry_P[k] = 2 * np.real(np.trace(Pk.conj().T @ dX_Ry_P) * np.conj(phi))
 
-        grad_Rx_P[k] = 2 * np.real(
-            np.trace(Pk.conj().T @ dX_Rx_P) * np.conj(phi)
-        )
+    return F0, grad_Rx_H, grad_Ry_H, grad_Rx_P, grad_Ry_P, U_final
 
-        grad_Ry_P[k] = 2 * np.real(
-            np.trace(Pk.conj().T @ dX_Ry_P) * np.conj(phi)
-        )
-        
-    return (F0, grad_Rx_H, grad_Ry_H, grad_Rx_P, grad_Ry_P, U_final)
-
-def pulse_optimize_grape(U_target, J, T, N, learn_rate, max_iter, startParameters = None):
-    
+def pulse_optimize_grape(U_target, J, T, N, learn_rate, max_iter, startParameters=None):
     """
     Run optimization loop up to max iterations or theoretical convergence: fidelity >= 0.999.
     """
-    
-    #print("Target matrix: \n", U_target)
-
-    dt = T/N
-
-    #print("dt = ",dt) # debug
-
-    # initialize
-    
+    # Initialize
     if startParameters is not None:
-        Rx_H,Ry_H,Rx_P,Ry_P = startParameters
+        Rx_H, Ry_H, Rx_P, Ry_P = startParameters
     else:
-        Rx_H = np.full(N, 0.2)
-        Ry_H = np.full(N, 0.2)
-        Rx_P = np.full(N, 0.2)
-        Ry_P = np.full(N, 0.2)
+        Rx_H = np.full(N, 0.2, dtype=np.float64)
+        Ry_H = np.full(N, 0.2, dtype=np.float64)
+        Rx_P = np.full(N, 0.2, dtype=np.float64)
+        Ry_P = np.full(N, 0.2, dtype=np.float64)
 
     lr = learn_rate
     maxi = max_iter
 
     for i in range(maxi):
-
-        F, gRxH, gRyH, gRxP, gRyP, Ufinal = grape_grad_2channel(
-            Rx_H, Ry_H, Rx_P, Ry_P, U_target, J, T, N
+        F, gRxH, gRyH, gRxP, gRyP, U_final = grape_grad_2channel(
+            Rx_H, Ry_H, Rx_P, Ry_P,
+            U_target, J, T, N,
+            H_x_H, H_y_H, H_x_P, H_y_P, H_J
         )
 
         Rx_H += lr * gRxH
@@ -184,20 +194,14 @@ def pulse_optimize_grape(U_target, J, T, N, learn_rate, max_iter, startParameter
         Ry_P += lr * gRyP
 
         # Clip amplitudes
-        Rx_H = np.clip(Rx_H, -1, 1)
-        Ry_H = np.clip(Ry_H, -1, 1)
-        Rx_P = np.clip(Rx_P, -1, 1)
-        Ry_P = np.clip(Ry_P, -1, 1)
+        Rx_H, Ry_H = clip_vector(Rx_H, Ry_H)
+        Rx_P, Ry_P = clip_vector(Rx_P, Ry_P)
 
-        #if i % 100 == 0:
-        #    print(f"Iter {i}, Fidelity = {F:.6f}")
-        
         if F > 0.999:
-            print("Converged.")
+            print(f"Converged at iteration {i}")
             break
-    
+
     print("Final fidelity:", F)
-    #print("Final matrix: \n", Ufinal)
     return Rx_H, Ry_H, Rx_P, Ry_P, F
 
 def export_to_json_GRAPE_2channel(
@@ -214,14 +218,20 @@ def export_to_json_GRAPE_2channel(
 ):
     """
     Export GRAPE two-channel pulse to SpinQLab JSON format.
+    Saves the file in the '/pulses/' folder.
     """
+
+    # Ensure the pulses directory exists
+    folder = "pulses"
+    os.makedirs(folder, exist_ok=True)
+    filepath = os.path.join(folder, filename + ".json")
 
     Rx_H = np.asarray(Rx_H).flatten()
     Ry_H = np.asarray(Ry_H).flatten()
     Rx_P = np.asarray(Rx_P).flatten()
     Ry_P = np.asarray(Ry_P).flatten()
 
-    dt = totalpulsewidth / slices * 1e6
+    dt = totalpulsewidth / slices
 
     channel1_pulses = []
     channel2_pulses = []
@@ -271,10 +281,10 @@ def export_to_json_GRAPE_2channel(
         }
     }
 
-    with open(filename, "w") as f:
+    with open(filepath, "w") as f:
         json.dump(data, f, indent=4)
 
-    print(f"Pulse file saved to {filename}")
+    print(f"Pulse file saved to {filepath}")
     
 def plot_pulse_from_json(json_file):
     """

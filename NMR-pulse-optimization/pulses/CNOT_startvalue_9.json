@@ -1,0 +1,4826 @@
+{
+    "description": {
+        "TITLE": "CNOT pulse start = 9",
+        "OWNER": "andreroque",
+        "DATE": "26-03-2026",
+        "FIDELITY": 0.7960966471858819,
+        "TOTALPULSEWIDTH": 0.0008,
+        "SLICES": 400
+    },
+    "parameters": {
+        "offset": [
+            {
+                "channel1_pulsefre_offset": 0,
+                "channel1_framefre_offset": 0,
+                "channel2_pulsefre_offset": 0,
+                "channel2_framefre_offset": 0
+            }
+        ]
+    },
+    "pulse": {
+        "channel1_pulse": [
+            {
+                "detuning": 0,
+                "phase": 17.190655614930936,
+                "amplitude": 100.0,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 16.56455456767593,
+                "amplitude": 100.0,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 15.983109215464216,
+                "amplitude": 99.99999999999997,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 15.444985151976432,
+                "amplitude": 100.0,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 14.948792934048859,
+                "amplitude": 100.0,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 14.493092596425761,
+                "amplitude": 100.0,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 14.07642433707735,
+                "amplitude": 99.99999999999999,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 13.69735981102911,
+                "amplitude": 100.0,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 13.354570431902859,
+                "amplitude": 100.0,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 13.04690925037181,
+                "amplitude": 99.99999999999999,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 12.773503305783464,
+                "amplitude": 100.0,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 12.533853851754749,
+                "amplitude": 99.99999999999999,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 12.32794252808386,
+                "amplitude": 99.99999999999999,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 12.15634159688078,
+                "amplitude": 100.0,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 12.0203265793662,
+                "amplitude": 100.0,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 11.921989236355952,
+                "amplitude": 100.0,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 11.864349707442061,
+                "amplitude": 100.0,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 11.851610128259388,
+                "amplitude": 100.0,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 11.889515656322562,
+                "amplitude": 99.99999999999997,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 11.985967223131155,
+                "amplitude": 99.81216337862013,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 12.147376626949894,
+                "amplitude": 99.01510599842923,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 12.380723942995221,
+                "amplitude": 98.09315053115493,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 12.694945314693502,
+                "amplitude": 97.03820887524431,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 13.09955426244762,
+                "amplitude": 95.84063197025134,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 13.604248230395593,
+                "amplitude": 94.48827706249557,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 14.218343335318572,
+                "amplitude": 92.96576432520942,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 14.950281645710053,
+                "amplitude": 91.25923462437045,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 15.807756479992568,
+                "amplitude": 89.36855688523619,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 16.797785380793485,
+                "amplitude": 87.3079471007273,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 17.926937320809436,
+                "amplitude": 85.10676545247453,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 19.202093395468854,
+                "amplitude": 82.81448879043576,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 20.630512770411116,
+                "amplitude": 80.49629298096792,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 22.219005007024176,
+                "amplitude": 78.22416182487217,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 23.972167332869482,
+                "amplitude": 76.06615117622047,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 25.89067771545521,
+                "amplitude": 74.08132910091844,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 27.969968448483,
+                "amplitude": 72.31914784980692,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 30.199279587898268,
+                "amplitude": 70.82025032420455,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 32.56109576529367,
+                "amplitude": 69.61679957437187,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 35.031157593684526,
+                "amplitude": 68.73222518480834,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 37.57926126811257,
+                "amplitude": 68.18106978567552,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 40.17081130039747,
+                "amplitude": 67.9685608961333,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 42.768998570250595,
+                "amplitude": 68.09012146685404,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 45.337310444595204,
+                "amplitude": 68.53084827004481,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 47.841995507385185,
+                "amplitude": 69.26479360257332,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 50.25412503665565,
+                "amplitude": 70.25422680453497,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 52.55094708095406,
+                "amplitude": 71.44951302794595,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 54.71632693013408,
+                "amplitude": 72.79098586254655,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 56.74015424888736,
+                "amplitude": 74.21788468523532,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 58.61711407098744,
+                "amplitude": 75.68081856820872,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 60.34566470068203,
+                "amplitude": 77.14537299456062,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 61.92742402737909,
+                "amplitude": 78.5862092925028,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 63.36652869789029,
+                "amplitude": 79.98358362759413,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 64.66901465349987,
+                "amplitude": 81.32063831241744,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 65.84220897073143,
+                "amplitude": 82.58235339411148,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 66.89418446402877,
+                "amplitude": 83.75499938510663,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 67.83329026482065,
+                "amplitude": 84.82582249469665,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 68.66776484460648,
+                "amplitude": 85.78277258948745,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 69.4054206054635,
+                "amplitude": 86.61454558277238,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 70.05340770715051,
+                "amplitude": 87.31039271399857,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 70.61804581046933,
+                "amplitude": 87.8598256798245,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 71.1047138110587,
+                "amplitude": 88.25236930051173,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 71.51779727472544,
+                "amplitude": 88.47722700939545,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 71.86069368285054,
+                "amplitude": 88.52286574320894,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 72.13588195585379,
+                "amplitude": 88.37649245687251,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 72.34506755499199,
+                "amplitude": 88.02351653978728,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 72.4894703031157,
+                "amplitude": 87.44603447129487,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 72.57039918995918,
+                "amplitude": 86.61940304664613,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 72.59075123282815,
+                "amplitude": 85.50176432134408,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 72.56131078917569,
+                "amplitude": 83.99208878707815,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 72.50834926431705,
+                "amplitude": 81.966941870957,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 72.42131430600712,
+                "amplitude": 79.65215359045551,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 72.27438958956574,
+                "amplitude": 77.24782846240556,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 72.05361332332919,
+                "amplitude": 74.8451868764185,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 71.7499769178283,
+                "amplitude": 72.5025426309538,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 71.35612588347479,
+                "amplitude": 70.26654908211981,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 70.86600242806263,
+                "amplitude": 68.17634831956386,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 70.27504373502224,
+                "amplitude": 66.26513768599361,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 69.58059640861067,
+                "amplitude": 64.56095913270505,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 68.78239878457086,
+                "amplitude": 63.08719899208361,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 67.88305007683495,
+                "amplitude": 61.86285689682885,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 66.88834904749041,
+                "amplitude": 60.90269044458834,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 65.80741188902395,
+                "amplitude": 60.217248412997094,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 64.65250067980101,
+                "amplitude": 59.81280687090612,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 63.43853300440906,
+                "amplitude": 59.69123857720281,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 62.18229899390507,
+                "amplitude": 59.849856493281905,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 60.90147686854352,
+                "amplitude": 60.28122953791877,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 59.61355523321714,
+                "amplitude": 60.97311869240395,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 58.334821862884006,
+                "amplitude": 61.90848515583499,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 57.0795411857946,
+                "amplitude": 63.06558552052921,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 55.85939865850697,
+                "amplitude": 64.41814839992367,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 54.68323272805454,
+                "amplitude": 65.93566912857128,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 53.55460318047434,
+                "amplitude": 67.57509542041748,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 52.475244253923854,
+                "amplitude": 69.29107861710798,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 51.44998440323841,
+                "amplitude": 71.0198886403299,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 50.47516893309222,
+                "amplitude": 72.46812168784669,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 49.55272030187486,
+                "amplitude": 73.79461847474887,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 48.6818609134807,
+                "amplitude": 75.0673259716295,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 47.86003275675209,
+                "amplitude": 76.3039458328141,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 47.083455608169814,
+                "amplitude": 77.51022167850363,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 46.34733101321823,
+                "amplitude": 78.68607362826428,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 45.64602423028105,
+                "amplitude": 79.82790198283402,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 44.973222834818614,
+                "amplitude": 80.9293792559146,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 44.322082689427916,
+                "amplitude": 81.98171032005929,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 43.68537004762905,
+                "amplitude": 82.9734520825039,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 43.055613442125185,
+                "amplitude": 83.88976952049227,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 42.42401482869622,
+                "amplitude": 84.71089988739013,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 41.777838023623715,
+                "amplitude": 85.40914601252764,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 41.10620056657634,
+                "amplitude": 85.61339428759983,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 40.4151114713877,
+                "amplitude": 84.98845434538535,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 39.7051360233822,
+                "amplitude": 84.1628917567231,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 38.971851688260564,
+                "amplitude": 83.17083806308693,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 38.210990131339024,
+                "amplitude": 82.04801054977156,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 37.418599861335636,
+                "amplitude": 80.83124489423666,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 36.591165576900096,
+                "amplitude": 79.5571709225406,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 35.72577514685129,
+                "amplitude": 78.26129440324286,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 34.82030795939792,
+                "amplitude": 76.97723524410613,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 33.87363583863236,
+                "amplitude": 75.73612741698076,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 32.88582538214338,
+                "amplitude": 74.56619416447452,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 31.85831888236559,
+                "amplitude": 73.49241016395294,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 30.794071977468125,
+                "amplitude": 72.53621420139783,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 29.69762803329025,
+                "amplitude": 71.71527455990811,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 28.575109130093015,
+                "amplitude": 71.04329026256744,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 27.434107130296095,
+                "amplitude": 70.52979770762583,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 26.283469709729694,
+                "amplitude": 70.17998053199975,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 25.13298937893305,
+                "amplitude": 69.9944923258832,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 23.99494721108197,
+                "amplitude": 69.96394439428735,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 22.884371956990737,
+                "amplitude": 70.06945186897178,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 21.806496672687913,
+                "amplitude": 70.31151213944021,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 20.769731450960794,
+                "amplitude": 70.67520025115553,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 19.782012655291062,
+                "amplitude": 71.14070501367611,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 18.850418999425273,
+                "amplitude": 71.68538371258755,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 17.981191277586923,
+                "amplitude": 72.2856597036395,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 17.1798070451645,
+                "amplitude": 72.91823347021915,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 16.451065334533876,
+                "amplitude": 73.56073735080163,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 15.799145382435404,
+                "amplitude": 74.19164388041611,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 15.227742761833285,
+                "amplitude": 74.79029123666197,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 14.740294095030233,
+                "amplitude": 75.33735242373348,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 14.340132915141833,
+                "amplitude": 75.81453080653404,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 14.030503104277054,
+                "amplitude": 76.20315096199086,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 13.814411650983494,
+                "amplitude": 76.48215002741203,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 13.694386439448333,
+                "amplitude": 76.62679463253728,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 13.67245013239728,
+                "amplitude": 76.61041631690537,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 13.75049361016662,
+                "amplitude": 76.40880662217346,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 13.930624169061831,
+                "amplitude": 76.00320159684883,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 14.215498985497312,
+                "amplitude": 75.38205020224396,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 14.609155241653855,
+                "amplitude": 74.54388340382752,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 15.117560266142826,
+                "amplitude": 73.49755276724112,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 15.748230796531676,
+                "amplitude": 72.2589338142893,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 16.509671541947377,
+                "amplitude": 70.8481697098865,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 17.411472961231652,
+                "amplitude": 69.2898509972812,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 18.464006038313347,
+                "amplitude": 67.61198635982393,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 19.67800547314619,
+                "amplitude": 65.84511781414545,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 21.064103223972584,
+                "amplitude": 64.02175540803324,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 22.632220149000357,
+                "amplitude": 62.175789745584055,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 24.390817948447257,
+                "amplitude": 60.341885028593836,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 26.34576705880481,
+                "amplitude": 58.554415558363495,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 28.498990585229507,
+                "amplitude": 56.84651288143772,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 30.847017842844306,
+                "amplitude": 55.24916467369765,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 33.37977313131526,
+                "amplitude": 53.79062384272297,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 36.079414870501296,
+                "amplitude": 52.49529972093478,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 38.9195893482632,
+                "amplitude": 51.382535855472156,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 41.86552829185083,
+                "amplitude": 50.46562611907689,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 44.875089982945035,
+                "amplitude": 49.75084069654512,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 47.900791119937125,
+                "amplitude": 49.23671097909273,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 50.89260924518647,
+                "amplitude": 48.913737699694764,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 53.8011236171051,
+                "amplitude": 48.76466209347713,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 56.580449395741,
+                "amplitude": 48.76499216399906,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 59.190541308484626,
+                "amplitude": 48.88422243842537,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 61.59852416301129,
+                "amplitude": 49.0878119928762,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 63.77894988398586,
+                "amplitude": 49.339175897338336,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 65.71316497815499,
+                "amplitude": 49.6019234004527,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 67.38810740157834,
+                "amplitude": 49.84400724691793,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 68.79494330934978,
+                "amplitude": 50.040948324183574,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 69.92784205650192,
+                "amplitude": 50.17542719856692,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 70.78286704450939,
+                "amplitude": 50.2359181076487,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 71.35697761772462,
+                "amplitude": 50.21530517675147,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 71.64720318948018,
+                "amplitude": 50.10989130155259,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 71.65002337915392,
+                "amplitude": 49.91855207084285,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 71.36100047758649,
+                "amplitude": 49.64214110756588,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 70.7747016384606,
+                "amplitude": 49.283410949357744,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 69.88494347177456,
+                "amplitude": 48.84740266703464,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 68.68538104026108,
+                "amplitude": 48.34219239717678,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 67.17045486247012,
+                "amplitude": 47.77967701133192,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 65.33673070380569,
+                "amplitude": 47.17690879372496,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 63.18462791861114,
+                "amplitude": 46.55823697397845,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 60.72055991508763,
+                "amplitude": 45.95751693186645,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 57.959531668069694,
+                "amplitude": 45.41628900428008,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 54.92778103790273,
+                "amplitude": 44.97815081582349,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 51.66469195918637,
+                "amplitude": 44.68509564887553,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 48.223166701494144,
+                "amplitude": 44.57417338732505,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 44.66784231269018,
+                "amplitude": 44.674377122193945,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 41.07122099760886,
+                "amplitude": 45.004971187151476,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 37.50813003939476,
+                "amplitude": 45.57415608759268,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 34.04962986010203,
+                "amplitude": 46.3788496877758,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 30.757657208265073,
+                "amplitude": 47.40551615321853,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 27.68137466589128,
+                "amplitude": 48.63170335793906,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 24.855638485202576,
+                "amplitude": 50.02797031663502,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 22.301434626413798,
+                "amplitude": 51.559936980991296,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 20.027715132921,
+                "amplitude": 53.19018601574618,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 18.033958456870185,
+                "amplitude": 54.8798782979379,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 16.312873376986303,
+                "amplitude": 56.59003323586075,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 14.852859827775031,
+                "amplitude": 58.2824907564716,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 13.640010055100896,
+                "amplitude": 59.92056490614589,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 12.65963543718255,
+                "amplitude": 61.46954920229503,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 11.897314233803579,
+                "amplitude": 62.89702312044258,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 11.33968762588011,
+                "amplitude": 64.17336092281062,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 10.974904065223159,
+                "amplitude": 65.27203150269847,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 10.793218920924085,
+                "amplitude": 66.17094482966684,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 10.78726373502045,
+                "amplitude": 66.85358517280436,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 10.951934907660243,
+                "amplitude": 67.3093907990312,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 11.284548371331473,
+                "amplitude": 67.53547592790756,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 11.784527151122257,
+                "amplitude": 67.5371994084583,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 12.452908815892597,
+                "amplitude": 67.32800057220027,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 13.291818511655041,
+                "amplitude": 66.92880537927726,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 14.303926083560118,
+                "amplitude": 66.36698295763506,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 15.491907828232392,
+                "amplitude": 65.67487677135121,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 16.857914063201182,
+                "amplitude": 64.88755545809842,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 18.40312456767926,
+                "amplitude": 64.0407928416489,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 20.12728708354896,
+                "amplitude": 63.16971171181284,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 22.02811805325533,
+                "amplitude": 62.30835092053088,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 24.10048797803137,
+                "amplitude": 61.48982849685214,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 26.335455692318103,
+                "amplitude": 60.746555081451746,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 28.719288556629337,
+                "amplitude": 60.11029197057578,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 31.232660474689187,
+                "amplitude": 59.61180985302433,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 33.85024171070164,
+                "amplitude": 59.280241672093304,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 36.54083032403867,
+                "amplitude": 59.14246538442097,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 39.26818678550215,
+                "amplitude": 59.222277055463955,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 41.992562551337265,
+                "amplitude": 59.53969594430069,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 44.6730150324652,
+                "amplitude": 60.109340555793054,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 47.270013942593835,
+                "amplitude": 60.93957472420367,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 49.7478843747328,
+                "amplitude": 62.032533222097676,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 52.07689553664195,
+                "amplitude": 63.38412078557957,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 54.23465345427204,
+                "amplitude": 64.98424186060464,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 56.20652664495956,
+                "amplitude": 66.8177385518651,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 57.985371305280744,
+                "amplitude": 68.86509079625662,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 59.57068017727463,
+                "amplitude": 71.10301467430882,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 60.96741292091366,
+                "amplitude": 73.50484918985234,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 62.18470763845564,
+                "amplitude": 76.04073717242649,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 63.234630944272666,
+                "amplitude": 78.6776678730609,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 64.1310547049908,
+                "amplitude": 81.37948092378988,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 64.88870560410388,
+                "amplitude": 84.10691635072929,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 65.52236542671848,
+                "amplitude": 86.8179267004506,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 66.04625521798299,
+                "amplitude": 89.46825571121354,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 66.4736112073733,
+                "amplitude": 92.01233957153322,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 66.81637566109673,
+                "amplitude": 94.40503512009718,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 67.08524006420387,
+                "amplitude": 96.60246724183321,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 67.28975253439283,
+                "amplitude": 98.56281505051608,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 67.43853405995567,
+                "amplitude": 99.99999999999999,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 67.54467245722087,
+                "amplitude": 100.0,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 67.60915670337323,
+                "amplitude": 99.99999999999999,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 67.63421607326671,
+                "amplitude": 99.99999999999999,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 67.6246896658858,
+                "amplitude": 100.0,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 67.58645327971381,
+                "amplitude": 100.0,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 67.52576825013034,
+                "amplitude": 99.99999999999999,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 67.4473497291407,
+                "amplitude": 99.97984918772977,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 67.35488926811396,
+                "amplitude": 99.875836603558,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 67.24655845682322,
+                "amplitude": 99.66969508066296,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 67.12017988825683,
+                "amplitude": 98.57748544823689,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 66.97943875768713,
+                "amplitude": 96.87901043349288,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 66.82587261783844,
+                "amplitude": 94.98939832519184,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 66.65957734398401,
+                "amplitude": 92.9631196688452,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 66.47966381157707,
+                "amplitude": 90.84062529421315,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 66.28493741465007,
+                "amplitude": 88.66371438524398,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 66.07423675652714,
+                "amplitude": 86.47554883391211,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 65.84664699205676,
+                "amplitude": 84.31955585479312,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 65.60153402820531,
+                "amplitude": 82.2377670095102,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 65.3386319718763,
+                "amplitude": 80.26989373251907,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 65.05808956243055,
+                "amplitude": 78.45249255525428,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 64.76036866375117,
+                "amplitude": 76.81843938717391,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 64.4457876757811,
+                "amplitude": 75.39609949166676,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 64.11658357700259,
+                "amplitude": 74.21066617887317,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 63.77662033999497,
+                "amplitude": 73.28345384723436,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 63.42899495026037,
+                "amplitude": 72.62997031155814,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 63.076466794763824,
+                "amplitude": 72.26035085756143,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 62.72160534302361,
+                "amplitude": 72.17935745363546,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 62.36665016696024,
+                "amplitude": 72.38650163076106,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 62.013375005177444,
+                "amplitude": 72.87608997773974,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 61.662973626481445,
+                "amplitude": 73.63728707605023,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 61.3159812860295,
+                "amplitude": 74.65418635254278,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 60.97225918680917,
+                "amplitude": 75.90579735980918,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 60.630955762782,
+                "amplitude": 77.36640980113069,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 60.29054266746378,
+                "amplitude": 79.00574842694932,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 59.94890807870577,
+                "amplitude": 80.7890913518051,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 59.60344565362272,
+                "amplitude": 82.67754274504964,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 59.25114141011488,
+                "amplitude": 84.62842732196322,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 58.88878361326432,
+                "amplitude": 86.59574660792335,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 58.51315866512132,
+                "amplitude": 88.53011430068132,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 58.121407200208466,
+                "amplitude": 90.3782706069151,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 57.71208401863785,
+                "amplitude": 92.07814018350842,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 57.324212503820675,
+                "amplitude": 93.23797170031354,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 56.928446938962765,
+                "amplitude": 93.99217282734965,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 56.4925295318784,
+                "amplitude": 94.55818687627303,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 56.006290081835246,
+                "amplitude": 94.96840101664185,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 55.46101734827214,
+                "amplitude": 95.24282134412964,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 54.84882993520037,
+                "amplitude": 95.39451554506876,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 54.16271713186704,
+                "amplitude": 95.42505791287384,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 53.39672459857891,
+                "amplitude": 95.32095683492363,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 52.545973972228666,
+                "amplitude": 95.05998670605821,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 51.60666526375467,
+                "amplitude": 94.6185797224628,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 50.57626329131996,
+                "amplitude": 93.97365847424582,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 49.45372937138731,
+                "amplitude": 93.10329186667946,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 48.24105562691642,
+                "amplitude": 91.9744505926136,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 46.944246610573636,
+                "amplitude": 90.54208414529471,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 45.55976421478078,
+                "amplitude": 88.85802655603663,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 44.07666014499886,
+                "amplitude": 87.03149935331018,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 42.488257122068376,
+                "amplitude": 85.13949117473027,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 40.79109381963985,
+                "amplitude": 83.24442012712726,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 38.98460817416725,
+                "amplitude": 81.40097087106514,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 37.07134969963339,
+                "amplitude": 79.65886918063856,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 35.05747563208116,
+                "amplitude": 78.06327138504258,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 32.95324220335492,
+                "amplitude": 76.65429806423685,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 30.773291869839028,
+                "amplitude": 75.46621758861126,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 28.536606700925745,
+                "amplitude": 74.5268918488602,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 26.266050823572836,
+                "amplitude": 73.85723593022786,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 23.987477172633227,
+                "amplitude": 73.47081787134618,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 21.728455792179883,
+                "amplitude": 73.3736271557813,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 19.516764864893915,
+                "amplitude": 73.56405133614307,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 17.378834502713847,
+                "amplitude": 74.03303911651264,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 15.338352529124428,
+                "amplitude": 74.76444848486358,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 13.415189677722212,
+                "amplitude": 75.73547949281422,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 11.624814195056356,
+                "amplitude": 76.91737195054264,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 9.978270306595055,
+                "amplitude": 78.27644411496036,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 8.482383458207575,
+                "amplitude": 79.7746131680739,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 7.140300988733194,
+                "amplitude": 81.3700930635526,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 5.952053878795067,
+                "amplitude": 83.01763663190984,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 4.915418836676121,
+                "amplitude": 84.66951539367743,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 4.026121387586601,
+                "amplitude": 86.27418531912457,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 3.2791813568307413,
+                "amplitude": 87.77898439585658,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 2.672840365153479,
+                "amplitude": 89.14509858756526,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 2.2094251935780926,
+                "amplitude": 90.35509533164112,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 1.8928216586450053,
+                "amplitude": 91.40547532049293,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 1.7266834990089484,
+                "amplitude": 92.29845901011035,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 1.7140051098391935,
+                "amplitude": 93.0382217045268,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 1.8575991421247755,
+                "amplitude": 93.63200832293956,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 2.160107617532882,
+                "amplitude": 94.08891751242649,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 2.623891071300704,
+                "amplitude": 94.41784862402346,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 3.251076332292836,
+                "amplitude": 94.62664346012282,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 4.043447322626621,
+                "amplitude": 94.72052055137931,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 5.002299757267174,
+                "amplitude": 94.70088643633122,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 6.128247165828728,
+                "amplitude": 94.56477564505599,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 7.420994515525048,
+                "amplitude": 94.3052586907313,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 8.879131730567963,
+                "amplitude": 93.91303978865703,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 10.499758861210479,
+                "amplitude": 93.37748391801927,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 12.278125075069324,
+                "amplitude": 92.68816477586091,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 14.205247751627445,
+                "amplitude": 91.82633336201185,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 16.240593005303523,
+                "amplitude": 90.66213087595658,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 18.392212566387162,
+                "amplitude": 89.30506150775989,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 20.6685315522775,
+                "amplitude": 87.85821142951175,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 23.04345573406793,
+                "amplitude": 86.27122355387444,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 25.570738350179194,
+                "amplitude": 84.80050879842966,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 28.238953364290584,
+                "amplitude": 83.47604085799715,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 31.03313046375264,
+                "amplitude": 82.32233544478552,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 33.93488647499147,
+                "amplitude": 81.35777135922146,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 36.92286692439917,
+                "amplitude": 80.59404785123223,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 39.97349296338954,
+                "amplitude": 80.0358200377934,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 43.06195861381603,
+                "amplitude": 79.68055618970065,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 46.16337664857113,
+                "amplitude": 79.51865102092825,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 49.253943713222945,
+                "amplitude": 79.53381426111109,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 52.31198993904483,
+                "amplitude": 79.70372618318672,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 55.31880445037972,
+                "amplitude": 80.00093254458169,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 58.259171417739786,
+                "amplitude": 80.39393523005452,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 61.12159951333123,
+                "amplitude": 80.8484191956777,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 63.898269135507896,
+                "amplitude": 81.32854216554621,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 66.58476223344584,
+                "amplitude": 81.79824646465161,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 69.17964704060637,
+                "amplitude": 82.22255038172254,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 71.6839840667688,
+                "amplitude": 82.56877178000896,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 74.10081001439711,
+                "amplitude": 82.80764764204427,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 76.4346363090453,
+                "amplitude": 82.91428691186422,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 78.69099009922077,
+                "amplitude": 82.86892183046085,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 80.87601333107737,
+                "amplitude": 82.65746408833947,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 82.996117875952,
+                "amplitude": 82.27185251798869,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 85.05768622001966,
+                "amplitude": 81.71016691412404,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 87.06680637543687,
+                "amplitude": 80.97649261759963,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 89.02903017495336,
+                "amplitude": 80.08055410071597,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 90.9491458760198,
+                "amplitude": 79.03713251263804,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 92.83095994102278,
+                "amplitude": 77.86530139721626,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 94.6770869072023,
+                "amplitude": 76.58752497641414,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 96.48875065876436,
+                "amplitude": 75.22866865777543,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 98.26560515299772,
+                "amplitude": 73.81497219190092,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 100.00558630356015,
+                "amplitude": 72.37303686928013,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 101.70481382493033,
+                "amplitude": 70.92886339903734,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 103.35755966586896,
+                "amplitude": 69.50698673455388,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 104.95630563917128,
+                "amplitude": 68.12972675745142,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 106.49190817951396,
+                "amplitude": 66.81657364832316,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 107.95388464754981,
+                "amplitude": 65.58371327919961,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 109.33082166738019,
+                "amplitude": 64.44369680807573,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 110.61089044587314,
+                "amplitude": 63.405250239366055,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 111.78244014946327,
+                "amplitude": 62.47320925610694,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 112.8346275210165,
+                "amplitude": 61.648558126136486,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 113.75803229888993,
+                "amplitude": 60.92854748121776,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 114.54520258419073,
+                "amplitude": 60.30686610035681,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 115.19109459797473,
+                "amplitude": 59.773839516003335,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 115.69338333051743,
+                "amplitude": 59.31664380107065,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 116.0526634618417,
+                "amplitude": 58.91952715270672,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 116.27263449022948,
+                "amplitude": 58.563987500469786,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 116.35992858178226,
+                "amplitude": 58.22900075454738,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 116.32362182844801,
+                "amplitude": 57.8913288695537,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 116.17467710682938,
+                "amplitude": 57.52591882041077,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 115.92545516435698,
+                "amplitude": 57.106345243583,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 115.5892871121379,
+                "amplitude": 56.605340062739906,
+                "width": 2e-06
+            }
+        ],
+        "channel2_pulse": [
+            {
+                "detuning": 0,
+                "phase": 352.32158066744915,
+                "amplitude": 35.24514167762252,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 1.2847663144281434,
+                "amplitude": 34.14435907127209,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 10.618534044033733,
+                "amplitude": 33.87494127787626,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 19.817724633379513,
+                "amplitude": 34.44194147404796,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 28.425876999011425,
+                "amplitude": 35.767597086690344,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 36.148784802163966,
+                "amplitude": 37.714030273556006,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 42.87647296986502,
+                "amplitude": 40.117330870218304,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 48.63551349618735,
+                "amplitude": 42.815626799915755,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 53.524912554623846,
+                "amplitude": 45.664425161716444,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 57.667678468632424,
+                "amplitude": 48.54160910738749,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 61.183731372932876,
+                "amplitude": 51.34688895297382,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 64.17828283633361,
+                "amplitude": 53.99925435302998,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 66.73879636339088,
+                "amplitude": 56.43423155116585,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 68.93586681406121,
+                "amplitude": 58.601608883513535,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 70.82549379208352,
+                "amplitude": 60.463740050047356,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 72.45156877645684,
+                "amplitude": 61.99432246631792,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 73.84810034483077,
+                "amplitude": 63.17748625181465,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 75.04098308791042,
+                "amplitude": 64.00688737762297,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 76.04957094147557,
+                "amplitude": 64.48530996719651,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 76.88788316930997,
+                "amplitude": 64.62412002454646,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 77.56523408461759,
+                "amplitude": 64.44254329999872,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 78.08685267531493,
+                "amplitude": 63.96658782206123,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 78.4545563061981,
+                "amplitude": 63.22820271108752,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 78.6671331070345,
+                "amplitude": 62.26428644048896,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 78.72078724711373,
+                "amplitude": 61.11565866068761,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 78.60964608807811,
+                "amplitude": 59.82601309482541,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 78.32640774643455,
+                "amplitude": 58.44095368181116,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 77.8631759180301,
+                "amplitude": 57.00724227658679,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 77.21247243573109,
+                "amplitude": 55.57199878810967,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 76.36845156465407,
+                "amplitude": 54.181972018760014,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 75.32825888177895,
+                "amplitude": 52.88298723523768,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 74.09349502180605,
+                "amplitude": 51.71920340895676,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 72.67172389360177,
+                "amplitude": 50.732164462012896,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 71.07784161879079,
+                "amplitude": 49.95966270647166,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 69.33488897730885,
+                "amplitude": 49.434715359989454,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 67.47391780866604,
+                "amplitude": 49.184718986587384,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 65.53270923587826,
+                "amplitude": 49.23076208258679,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 63.55340233257116,
+                "amplitude": 49.587097515878135,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 61.579356479553624,
+                "amplitude": 50.260834781896214,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 59.651781891779365,
+                "amplitude": 51.25191435673487,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 57.80675158841834,
+                "amplitude": 52.55332913919681,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 56.07307799749379,
+                "amplitude": 54.15153119686313,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 54.47128693860359,
+                "amplitude": 56.02692750791773,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 53.013647202114925,
+                "amplitude": 58.15436706944328,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 51.70501005943078,
+                "amplitude": 60.503574784462764,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 50.54413074706369,
+                "amplitude": 63.039561065630664,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 49.52517286813244,
+                "amplitude": 65.72310853586914,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 48.63919374504544,
+                "amplitude": 68.51156757312468,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 47.875488489976725,
+                "amplitude": 71.35974121109616,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 47.22264239336726,
+                "amplitude": 74.22040889421415,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 46.66923016030745,
+                "amplitude": 77.04468357093478,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 46.20425511122137,
+                "amplitude": 79.78271463253552,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 45.81740767449506,
+                "amplitude": 82.38464510187063,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 45.49919869678543,
+                "amplitude": 84.80178985684543,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 45.24100256774184,
+                "amplitude": 86.98794122186916,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 45.03503915283396,
+                "amplitude": 88.9007313846447,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 44.874317232720365,
+                "amplitude": 90.50297495603026,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 44.752556251575,
+                "amplitude": 91.76391874994889,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 44.66409790709314,
+                "amplitude": 92.66031250436208,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 44.60381495726812,
+                "amplitude": 93.17723415472948,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 44.56702074053634,
+                "amplitude": 93.30861700439957,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 44.54938058036628,
+                "amplitude": 93.05744112755112,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 44.54682466061056,
+                "amplitude": 92.43557611475323,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 44.55546129035258,
+                "amplitude": 91.46328459326031,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 44.57148926436613,
+                "amplitude": 90.16841767068127,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 44.59111006329041,
+                "amplitude": 88.58532720881797,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 44.610441007131,
+                "amplitude": 86.75350901142271,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 44.62543084405589,
+                "amplitude": 84.71581833132575,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 44.631711929525906,
+                "amplitude": 82.51502331797353,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 44.623728579710665,
+                "amplitude": 80.19180879768848,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 44.5953422937955,
+                "amplitude": 77.80244775134487,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 44.54108058467056,
+                "amplitude": 75.403555975969,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 44.454964752857684,
+                "amplitude": 73.04394296556843,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 44.33061734235568,
+                "amplitude": 70.76712260913146,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 44.161547061033865,
+                "amplitude": 68.61192800197156,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 43.94145306952819,
+                "amplitude": 66.61250996187222,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 43.664604416603346,
+                "amplitude": 64.79837579769439,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 43.32628823740645,
+                "amplitude": 63.19450006071066,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 42.92329733945148,
+                "amplitude": 61.821479268161404,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 42.454407551097745,
+                "amplitude": 60.695687933524,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 41.92078154540224,
+                "amplitude": 59.829405481898156,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 41.32623045394509,
+                "amplitude": 59.23088914875485,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 40.677273469942094,
+                "amplitude": 58.90437989487103,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 39.98295990695215,
+                "amplitude": 58.85004160351863,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 39.2544545773966,
+                "amplitude": 59.0638462287011,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 38.504427599157744,
+                "amplitude": 59.537425561722415,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 37.746325333067645,
+                "amplitude": 60.25792561763834,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 36.99361608978807,
+                "amplitude": 61.207893942051314,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 36.25910328108989,
+                "amplitude": 62.36523511960523,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 35.554378445187815,
+                "amplitude": 63.70326820822362,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 34.88945559285907,
+                "amplitude": 65.19091958398687,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 34.274093371182154,
+                "amplitude": 66.61569565459773,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 33.702902342501766,
+                "amplitude": 67.83993389323652,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 33.185333812974285,
+                "amplitude": 69.05272994823935,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 32.730540466544795,
+                "amplitude": 70.20395168479467,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 32.3432594657113,
+                "amplitude": 71.2850738225908,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 32.02368047672039,
+                "amplitude": 72.30704231439078,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 31.770545939514367,
+                "amplitude": 73.28168212967418,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 31.582738617112216,
+                "amplitude": 74.21506840253761,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 31.459918896493694,
+                "amplitude": 75.10695787942953,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 31.402762367727686,
+                "amplitude": 75.95150763943911,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 31.413068991239196,
+                "amplitude": 76.73736167964725,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 31.493771294753238,
+                "amplitude": 77.4469966167554,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 31.648819828870362,
+                "amplitude": 78.0550877807119,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 31.882850631201094,
+                "amplitude": 78.52560357042023,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 32.20047679940097,
+                "amplitude": 78.80663061381603,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 32.60411545217321,
+                "amplitude": 78.82244420174418,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 33.07152663062841,
+                "amplitude": 78.10507254812998,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 33.6244233902975,
+                "amplitude": 76.91605571748632,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 34.279403040245,
+                "amplitude": 75.55273201781436,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 35.04356952960586,
+                "amplitude": 74.05152007037226,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 35.924370269223594,
+                "amplitude": 72.45121660056121,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 36.92924271368267,
+                "amplitude": 70.79192959094495,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 38.0651482512821,
+                "amplitude": 69.11408730128338,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 39.33796440024152,
+                "amplitude": 67.45759213396583,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 40.75174021021375,
+                "amplitude": 65.86109490469083,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 42.30783771305518,
+                "amplitude": 64.3613603351299,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 44.00401258947039,
+                "amplitude": 62.992685401526685,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 45.833526759450486,
+                "amplitude": 61.78632626892456,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 47.78442175376588,
+                "amplitude": 60.76990135336562,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 49.83910466874904,
+                "amplitude": 59.96675862608358,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 51.974394413570565,
+                "amplitude": 59.395319757215326,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 54.16213101182561,
+                "amplitude": 59.068440016329184,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 56.370362139238836,
+                "amplitude": 58.99284542650187,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 58.56500618433689,
+                "amplitude": 59.16871735970324,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 60.72774480068937,
+                "amplitude": 59.44340282476011,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 62.87803101513034,
+                "amplitude": 59.596707806460834,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 64.95801338000508,
+                "amplitude": 59.90628337491043,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 66.93841131348583,
+                "amplitude": 60.35183024989752,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 68.79631617663624,
+                "amplitude": 60.908833198125954,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 70.5136189429296,
+                "amplitude": 61.55105563545038,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 72.07655212163513,
+                "amplitude": 62.2504692282853,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 73.47518889552775,
+                "amplitude": 62.97829405231737,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 74.70271608064843,
+                "amplitude": 63.70687286714094,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 75.7544651984306,
+                "amplitude": 64.41272760818791,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 76.62709649599775,
+                "amplitude": 65.07837771446083,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 77.31799432719949,
+                "amplitude": 65.69296904311246,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 77.82493010494231,
+                "amplitude": 66.25140599254418,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 78.1458840192834,
+                "amplitude": 66.75266882940325,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 78.27891560974277,
+                "amplitude": 67.19797132220639,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 78.22202683391247,
+                "amplitude": 67.58930215287295,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 77.97304368920192,
+                "amplitude": 67.92841297351816,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 77.52959188547705,
+                "amplitude": 68.216167762027,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 76.8891965572731,
+                "amplitude": 68.45210733757689,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 76.04949733253426,
+                "amplitude": 68.63404225227912,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 75.00856645959513,
+                "amplitude": 68.75786265281539,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 73.76527351593157,
+                "amplitude": 68.81760814351043,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 72.31961487807808,
+                "amplitude": 68.80597349865864,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 70.67299980121514,
+                "amplitude": 68.71555814218983,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 68.82851842854778,
+                "amplitude": 68.54101752219202,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 66.79105755786742,
+                "amplitude": 68.28255869717748,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 64.56731197205814,
+                "amplitude": 67.9501927806728,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 62.16591111181753,
+                "amplitude": 67.56680638262993,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 59.597982684067546,
+                "amplitude": 67.16763829752638,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 56.878291421833445,
+                "amplitude": 66.79460406496133,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 54.02635501708033,
+                "amplitude": 66.48991069768458,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 51.06695823933459,
+                "amplitude": 66.29100079171386,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 48.02958039943798,
+                "amplitude": 66.22747049920895,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 44.947054125017566,
+                "amplitude": 66.31936715853564,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 41.85409321527026,
+                "amplitude": 66.57636394318655,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 38.78559643369352,
+                "amplitude": 66.99782452690337,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 35.774847279197736,
+                "amplitude": 67.57366763368124,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 32.85194272393497,
+                "amplitude": 68.28584872458508,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 30.042705456510795,
+                "amplitude": 69.11026512514371,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 27.368167015870384,
+                "amplitude": 70.01903273489806,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 24.844581669904375,
+                "amplitude": 70.98295049559343,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 22.48382307960791,
+                "amplitude": 71.97361694147814,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 20.294019373015267,
+                "amplitude": 72.96530568708816,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 18.280245283063653,
+                "amplitude": 73.93623868260285,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 16.44512564666041,
+                "amplitude": 74.86900976956758,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 14.789391883768849,
+                "amplitude": 75.75071738019106,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 13.312333920683676,
+                "amplitude": 76.57254965068054,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 12.012190083635408,
+                "amplitude": 77.32931030082374,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 10.886420725223523,
+                "amplitude": 78.01857649543024,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 9.931990644440559,
+                "amplitude": 78.640121944959,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 9.14560737922668,
+                "amplitude": 79.19534453509019,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 8.52387338857066,
+                "amplitude": 79.68647497715033,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 8.063460287126196,
+                "amplitude": 80.11634414320129,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 7.761195472228697,
+                "amplitude": 80.48798334451067,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 7.614110434186301,
+                "amplitude": 80.80436895545496,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 7.619440516357383,
+                "amplitude": 81.06822167926569,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 7.774591834732345,
+                "amplitude": 81.28195990050813,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 8.077071756723283,
+                "amplitude": 81.44775659231045,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 8.52438314654032,
+                "amplitude": 81.56765451323176,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 9.113895582568489,
+                "amplitude": 81.64374680739844,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 9.84270318689645,
+                "amplitude": 81.67835970904798,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 10.707481362310446,
+                "amplitude": 81.67421300441681,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 11.704340443900882,
+                "amplitude": 81.63451691523932,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 12.8286782357532,
+                "amplitude": 81.56294273979603,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 14.075041561048437,
+                "amplitude": 81.46350094476227,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 15.437000750991059,
+                "amplitude": 81.34028827162948,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 16.90705046881444,
+                "amplitude": 81.19707976703084,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 18.47654726066395,
+                "amplitude": 81.03680915756331,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 20.135699028621076,
+                "amplitude": 80.86096982984309,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 21.873622352448365,
+                "amplitude": 80.66903887873275,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 23.67847697142073,
+                "amplitude": 80.45803551636243,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 25.537686667587593,
+                "amplitude": 80.22241282134466,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 27.43823826918447,
+                "amplitude": 79.95442564281433,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 29.3670360537664,
+                "amplitude": 79.64503787098974,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 31.311283776387967,
+                "amplitude": 79.28536814588463,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 33.25884786540344,
+                "amplitude": 78.86831729149225,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 35.1985442631257,
+                "amplitude": 78.38961141997358,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 37.12032448433793,
+                "amplitude": 77.84781939928949,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 39.015404323928585,
+                "amplitude": 77.2441295534082,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 40.8763251204203,
+                "amplitude": 76.58194213215424,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 42.6969513807842,
+                "amplitude": 75.86640104218809,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 44.47240550727967,
+                "amplitude": 75.10393334444669,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 46.19896373950765,
+                "amplitude": 74.30185566838233,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 47.87390871550165,
+                "amplitude": 73.46804514797356,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 49.49534657548859,
+                "amplitude": 72.61064726620396,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 51.06202471633605,
+                "amplitude": 71.73790294326747,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 52.573130206373136,
+                "amplitude": 70.85798036750363,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 54.02808766579423,
+                "amplitude": 69.97885681012569,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 55.42636961122417,
+                "amplitude": 69.10821503540745,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 56.76733128176649,
+                "amplitude": 68.25335522937183,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 58.050079261328655,
+                "amplitude": 67.42112157108286,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 59.27338565465637,
+                "amplitude": 66.61783206353321,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 60.43565575704863,
+                "amplitude": 65.84927471527439,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 61.534940948410814,
+                "amplitude": 65.1207662983882,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 62.568954363158326,
+                "amplitude": 64.43763183628514,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 63.53506811984861,
+                "amplitude": 63.80578305636162,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 64.43033077856609,
+                "amplitude": 63.23178979425591,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 65.25154433605455,
+                "amplitude": 62.72242703328177,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 65.99529636194049,
+                "amplitude": 62.28498783551573,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 66.65799091181768,
+                "amplitude": 61.92766439182403,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 67.23589792946515,
+                "amplitude": 61.65984566254242,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 67.7252453756951,
+                "amplitude": 61.49229531383895,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 68.12241299066213,
+                "amplitude": 61.436871918084556,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 68.42420111531774,
+                "amplitude": 61.506198845074586,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 68.62820351441151,
+                "amplitude": 61.712839569418854,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 68.73314433248366,
+                "amplitude": 62.06869061487195,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 68.73927859493986,
+                "amplitude": 62.58379611473385,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 68.64865281642308,
+                "amplitude": 63.2655260750247,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 68.46525321310111,
+                "amplitude": 64.1176075699381,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 68.19501436992314,
+                "amplitude": 65.13911481504904,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 67.84564006262374,
+                "amplitude": 66.32362424402599,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 67.42629547006716,
+                "amplitude": 67.65829203393217,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 66.94719036174295,
+                "amplitude": 69.12293955047281,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 66.41910017826963,
+                "amplitude": 70.68910990372439,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 65.85285177992597,
+                "amplitude": 72.31941999393834,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 65.25874623907026,
+                "amplitude": 73.96812321821102,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 64.6458436153737,
+                "amplitude": 75.58535001086992,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 64.02137875818066,
+                "amplitude": 77.12442353986425,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 63.39059620997744,
+                "amplitude": 78.54836200675192,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 62.757038563354634,
+                "amplitude": 79.83078999638546,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 62.122884602672286,
+                "amplitude": 80.95344661737232,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 61.48912786702628,
+                "amplitude": 81.90362965901848,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 60.85564116685121,
+                "amplitude": 82.67221006964394,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 60.22074874126485,
+                "amplitude": 83.24997221350246,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 59.58222735291695,
+                "amplitude": 83.63607161934283,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 58.93721628273031,
+                "amplitude": 83.83189475251658,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 58.282052534560655,
+                "amplitude": 83.83949118928274,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 57.61235391760038,
+                "amplitude": 83.66180659982149,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 56.9230880656937,
+                "amplitude": 83.30257174539699,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 56.20873979877845,
+                "amplitude": 82.76530004260266,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 55.46301571525211,
+                "amplitude": 82.05614043089241,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 54.67947483006254,
+                "amplitude": 81.18007381932281,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 53.84922173486529,
+                "amplitude": 80.13772149516713,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 52.965790516049346,
+                "amplitude": 78.93456918575377,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 52.02284852317059,
+                "amplitude": 77.57583890699136,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 51.013327185829986,
+                "amplitude": 76.06559952468818,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 49.93004161327907,
+                "amplitude": 74.41178329365844,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 48.7657638865247,
+                "amplitude": 72.63427181187006,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 47.5134742368702,
+                "amplitude": 70.77163970145747,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 46.167192805470904,
+                "amplitude": 68.87582166611888,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 44.7231017810875,
+                "amplitude": 66.99939582263667,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 43.18044806592219,
+                "amplitude": 65.19230373880058,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 41.54243159169696,
+                "amplitude": 63.499227536671334,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 39.81689729043488,
+                "amplitude": 61.95485442663835,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 38.016362562761245,
+                "amplitude": 60.57370337498384,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 36.159619875720956,
+                "amplitude": 59.40799043216596,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 34.27227032978534,
+                "amplitude": 58.523347485644706,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 32.38359674131488,
+                "amplitude": 57.94811779831883,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 30.524978548658243,
+                "amplitude": 57.694194173044835,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 28.72790213603876,
+                "amplitude": 57.76465970113938,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 27.021689650216242,
+                "amplitude": 58.15517708181977,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 25.43148943904166,
+                "amplitude": 58.854882388921546,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 23.976830510869295,
+                "amplitude": 59.84708038567006,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 22.67090813343525,
+                "amplitude": 61.10985764127872,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 21.52059712717331,
+                "amplitude": 62.616598878624906,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 20.527073374613,
+                "amplitude": 64.33638368344054,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 19.68680619211883,
+                "amplitude": 66.23421646320189,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 18.99276562618566,
+                "amplitude": 68.27139643790561,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 18.435579595397545,
+                "amplitude": 70.40551143012283,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 18.004485277130595,
+                "amplitude": 72.58985811516196,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 17.688618187707185,
+                "amplitude": 74.77653542766839,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 17.477481561240797,
+                "amplitude": 76.91570836346004,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 17.36161913867613,
+                "amplitude": 78.95780664138759,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 17.333138476842503,
+                "amplitude": 80.85647970750988,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 17.38501555509166,
+                "amplitude": 82.56792004076911,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 17.51449566634073,
+                "amplitude": 84.0598419465385,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 17.719480563534855,
+                "amplitude": 85.30564646081947,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 17.998870513279,
+                "amplitude": 86.2836483309308,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 18.352979471342277,
+                "amplitude": 86.97629649147741,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 18.783171054654616,
+                "amplitude": 87.3669352240121,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 19.291571892042416,
+                "amplitude": 87.4379756648724,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 19.881229525213598,
+                "amplitude": 87.17410683508223,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 20.55652309512313,
+                "amplitude": 86.56775863763009,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 21.323148165423053,
+                "amplitude": 85.6201238768646,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 22.188423779913965,
+                "amplitude": 84.34373529455972,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 23.16145798333978,
+                "amplitude": 82.76242703579672,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 24.253273090107417,
+                "amplitude": 80.90991663777447,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 25.47681727370127,
+                "amplitude": 78.8269576726461,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 26.846916621360265,
+                "amplitude": 76.5631508310024,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 28.378734159409415,
+                "amplitude": 74.17168450001473,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 30.08770008574885,
+                "amplitude": 71.70738530945107,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 31.98879517049034,
+                "amplitude": 69.22568609147335,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 34.0954442677803,
+                "amplitude": 66.78173554889064,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 36.41799054372159,
+                "amplitude": 64.42952664291761,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 38.961776651900074,
+                "amplitude": 62.22098722371121,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 41.72492602065356,
+                "amplitude": 60.204895698127714,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 44.69608340741483,
+                "amplitude": 58.425634301666065,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 47.8525237664304,
+                "amplitude": 56.921849127424714,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 51.159190432975926,
+                "amplitude": 55.724991517448416,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 54.56915470474238,
+                "amplitude": 54.85783637231646,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 58.02586868764564,
+                "amplitude": 54.333237245653265,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 61.46710254056044,
+                "amplitude": 54.153342159977505,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 64.82997990141496,
+                "amplitude": 54.30946495817479,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 68.05614059367032,
+                "amplitude": 54.78272612585232,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 71.0960295543282,
+                "amplitude": 55.54533503934008,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 73.91157347971256,
+                "amplitude": 56.5622828059781,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 76.47704418003731,
+                "amplitude": 57.79310854691207,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 78.7783531495502,
+                "amplitude": 59.19363162626372,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 80.81126042394516,
+                "amplitude": 60.717464457828804,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 82.57906413455188,
+                "amplitude": 62.31729422772386,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 84.09017462095113,
+                "amplitude": 63.946014858149965,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 85.3560243352661,
+                "amplitude": 65.55748858604503,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 86.38927910249838,
+                "amplitude": 67.10714607699995,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 87.20216883490876,
+                "amplitude": 68.55307377051123,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 87.80570903197263,
+                "amplitude": 69.85636975203825,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 88.2093976778746,
+                "amplitude": 70.98145767894705,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 88.42092224203249,
+                "amplitude": 71.89654719691858,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 88.44596696844071,
+                "amplitude": 72.57382531499344,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 88.28803318287444,
+                "amplitude": 72.98984825029775,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 87.94830724938024,
+                "amplitude": 73.12606825939413,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 87.4255278587844,
+                "amplitude": 72.96948012638408,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 86.71577688458659,
+                "amplitude": 72.51343256646965,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 85.81223097088488,
+                "amplitude": 71.75841791815579,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 84.70492943744836,
+                "amplitude": 70.71260587877676,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 83.38044830013568,
+                "amplitude": 69.39241891870405,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 81.82178893228439,
+                "amplitude": 67.82243573884689,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 80.00843590793927,
+                "amplitude": 66.03501074216528,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 77.91651210056274,
+                "amplitude": 64.07007628130818,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 75.51931443993415,
+                "amplitude": 61.974788206587185,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 72.78840625202419,
+                "amplitude": 59.803047990118294,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 69.69458217662395,
+                "amplitude": 57.61554459853755,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 66.2130464174106,
+                "amplitude": 55.47791594585531,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 62.327638023557974,
+                "amplitude": 53.459293130355746,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 58.03492091876718,
+                "amplitude": 51.632149023413135,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 53.35991477453461,
+                "amplitude": 50.063081203910286,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 48.35046836611824,
+                "amplitude": 48.81456589358798,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 43.08431759945945,
+                "amplitude": 47.937768489055884,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 37.66664533594549,
+                "amplitude": 47.46752311952492,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 32.22117662882805,
+                "amplitude": 47.418341620117026,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 26.87617557077427,
+                "amplitude": 47.78257815777961,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 21.749105051505015,
+                "amplitude": 48.531366872696104,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 16.93441343524295,
+                "amplitude": 49.6181541792629,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 12.49734751535298,
+                "amplitude": 50.983737355067674,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 8.474047539372355,
+                "amplitude": 52.561706871180824,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 4.876131709141699,
+                "amplitude": 54.28326791184137,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 1.697250584304322,
+                "amplitude": 56.080866501430904,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 358.9196840956691,
+                "amplitude": 57.89074614147055,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 356.5200411868796,
+                "amplitude": 59.65506770446636,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 354.47345174571274,
+                "amplitude": 61.32320318902356,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 352.756263224567,
+                "amplitude": 62.85225930400201,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 351.34758972571274,
+                "amplitude": 64.20714506833566,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 350.2300326739427,
+                "amplitude": 65.36019369774341,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 349.39010331001987,
+                "amplitude": 66.29111139890577,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 348.8185261590482,
+                "amplitude": 66.98726879846794,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 348.5102079078728,
+                "amplitude": 67.44346243020077,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 348.4639251419493,
+                "amplitude": 67.66104859902225,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 348.68191564978815,
+                "amplitude": 67.64690857991782,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 349.16952647138066,
+                "amplitude": 67.41272050006893,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 349.9348326704381,
+                "amplitude": 66.97442753653206,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 350.98827529562305,
+                "amplitude": 66.3521589671586,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 352.34226215222225,
+                "amplitude": 65.57057157660404,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 354.0106309286069,
+                "amplitude": 64.65945940371589,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 356.0078438017885,
+                "amplitude": 63.65443069591983,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 358.3477671093098,
+                "amplitude": 62.59746283306901,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 1.0418427743018648,
+                "amplitude": 61.53703982614085,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 4.096625530702737,
+                "amplitude": 60.52793448739495,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 7.510550749892994,
+                "amplitude": 59.630074982370196,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 11.270279083390443,
+                "amplitude": 58.90661272006539,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 15.347206510225595,
+                "amplitude": 58.42107559941159,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 19.695159208595715,
+                "amplitude": 58.23389689139577,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 24.25031938432387,
+                "amplitude": 58.398531066358494,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 28.934135154435644,
+                "amplitude": 58.957522519334994,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 33.65924316070862,
+                "amplitude": 59.93914207850379,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 38.33741015116103,
+                "amplitude": 61.35515165409975,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 42.88771730147748,
+                "amplitude": 63.199914971217005,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 47.24313508042748,
+                "amplitude": 65.45025614840681,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 51.35435920596644,
+                "amplitude": 68.06574064970634,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 55.19071362268641,
+                "amplitude": 70.98803918964741,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 58.73876335444252,
+                "amplitude": 74.13904159459153,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 61.99850686654993,
+                "amplitude": 77.43362621788165,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 64.97862926834863,
+                "amplitude": 80.79123996659257,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 67.69258703991107,
+                "amplitude": 84.14213108565353,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 70.15670694484835,
+                "amplitude": 87.42212911109736,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 72.38862272981167,
+                "amplitude": 90.57355455854601,
+                "width": 2e-06
+            },
+            {
+                "detuning": 0,
+                "phase": 74.40606092544935,
+                "amplitude": 93.54920538900177,
+                "width": 2e-06
+            }
+        ]
+    }
+}
