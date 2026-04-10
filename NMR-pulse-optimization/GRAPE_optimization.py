@@ -1,17 +1,18 @@
+
+# Gradient Ascent - GRAPE - different channels
+
 import numpy as np
 import os
-import scipy
 import json
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
+from scipy.optimize import minimize
 from mpl_toolkits.mplot3d import Axes3D
 from datetime import datetime
 from qiskit.quantum_info import Pauli
 from numba import njit
 
 np.set_printoptions(linewidth=200, precision=4, suppress=True)
-
-# Initialize Pauli matrices
 
 pauli_x = Pauli('X')
 pauli_y = Pauli('Y')
@@ -33,20 +34,17 @@ Iz2 = np.kron(I,Z/2)
 U_cnot = np.array([[1,0,0,0],
                    [0,1,0,0],
                    [0,0,0,1],
-                   [0,0,1,0]])
+                   [0,0,1,0]], dtype=np.complex128)
 
 U_perm = np.array([[1,0,0,0],
                    [0,0,0,1],
                    [0,1,0,0],
-                   [0,0,1,0]])
+                   [0,0,1,0]], dtype=np.complex128)
 
 U_cz = np.array([[1,0,0,0],
-                 [0,1,0,0],
-                 [0,0,1,0],
-                 [0,0,0,-1]])
-
-
-# Gradient Ascent - GRAPE - different channels
+                [0,1,0,0],
+                [0,0,1,0],
+                [0,0,0,-1]], dtype=np.complex128)
 
 # constants
 n = 2
@@ -55,7 +53,7 @@ d = 2**n
 #wP = 11e6
 #w1H = w1P after calibration
 w1_max = 6250
-J = 696
+J=696
 
 H_x_H = 2*np.pi*w1_max*(Ix1)
 H_x_P = 2*np.pi*w1_max*(Ix2)
@@ -94,7 +92,7 @@ def p_calc_2channel(Rx_H, Ry_H, Rx_P, Ry_P, U_target, J, T, N,
         P_list[k] = P
 
     return P_list
-
+  
 @njit
 def x_calc_2channel(Rx_H, Ry_H, Rx_P, Ry_P, J, T, N,
                     H_x_H, H_y_H, H_x_P, H_y_P, H_J):
@@ -127,6 +125,23 @@ def clip_vector(Rx, Ry, max_norm=1.0):
     norm = np.sqrt(Rx**2 + Ry**2)
     scale = np.maximum(1.0, norm / max_norm)
     return Rx / scale, Ry / scale
+
+@njit
+def gaussiansquare_envelope(N, rise_frac=0.15):
+    rise_len = int(N * rise_frac)
+    flat_len = N - 2 * rise_len
+
+    sigma = rise_len / 3.0
+    t = np.arange(rise_len)
+
+    rise = np.exp(-0.5 * ((t - rise_len)**2) / sigma**2)
+    fall = rise[::-1]
+
+    flat = np.ones(flat_len)
+
+    env = np.concatenate((rise, flat, fall))
+
+    return env / np.max(env)
 
 @njit
 def grape_grad_2channel(Rx_H, Ry_H, Rx_P, Ry_P, U_target, J, T, N,
@@ -162,6 +177,54 @@ def grape_grad_2channel(Rx_H, Ry_H, Rx_P, Ry_P, U_target, J, T, N,
         grad_Ry_H[k] = 2 * np.real(np.trace(Pk.conj().T @ dX_Ry_H) * np.conj(phi))
         grad_Rx_P[k] = 2 * np.real(np.trace(Pk.conj().T @ dX_Rx_P) * np.conj(phi))
         grad_Ry_P[k] = 2 * np.real(np.trace(Pk.conj().T @ dX_Ry_P) * np.conj(phi))
+
+    return F0, grad_Rx_H, grad_Ry_H, grad_Rx_P, grad_Ry_P, U_final
+
+@njit
+def grape_grad_2channel_envelope(Rx_H, Ry_H, Rx_P, Ry_P, U_target, J, T, N,
+                        H_x_H, H_y_H, H_x_P, H_y_P, H_J, env):
+    """
+    GRAPE algorithm gradient calculation.
+    """
+    d = 4
+    dt = T / N
+    
+    Rx_H_enveloped = env * Rx_H
+    Ry_H_enveloped = env * Ry_H
+    Rx_P_enveloped = env * Rx_P
+    Ry_P_enveloped = env * Ry_P
+    
+    X_list, U_final = x_calc_2channel(Rx_H_enveloped, Ry_H_enveloped, Rx_P_enveloped, Ry_P_enveloped, J, T, N,
+                                      H_x_H, H_y_H, H_x_P, H_y_P, H_J)
+    P_list = p_calc_2channel(Rx_H_enveloped, Ry_H_enveloped, Rx_P_enveloped, Ry_P_enveloped, U_target, J, T, N,
+                             H_x_H, H_y_H, H_x_P, H_y_P, H_J)
+
+    phi = np.trace(U_target.conj().T @ U_final)
+    F0 = (np.abs(phi)**2) / (d**2)
+
+    grad_Rx_H = np.zeros(N)
+    grad_Ry_H = np.zeros(N)
+    grad_Rx_P = np.zeros(N)
+    grad_Ry_P = np.zeros(N)
+
+    for k in range(N):
+        Xk = X_list[k]
+        Pk = P_list[k]
+
+        dX_Rx_H = -1j * dt * (H_x_H @ Xk)
+        dX_Ry_H = -1j * dt * (H_y_H @ Xk)
+        dX_Rx_P = -1j * dt * (H_x_P @ Xk)
+        dX_Ry_P = -1j * dt * (H_y_P @ Xk)
+
+        grad_Rx_H[k] = 2 * np.real(np.trace(Pk.conj().T @ dX_Rx_H) * np.conj(phi))
+        grad_Ry_H[k] = 2 * np.real(np.trace(Pk.conj().T @ dX_Ry_H) * np.conj(phi))
+        grad_Rx_P[k] = 2 * np.real(np.trace(Pk.conj().T @ dX_Rx_P) * np.conj(phi))
+        grad_Ry_P[k] = 2 * np.real(np.trace(Pk.conj().T @ dX_Ry_P) * np.conj(phi))
+        
+        grad_Rx_H[k] *= env[k]
+        grad_Ry_H[k] *= env[k]
+        grad_Rx_P[k] *= env[k]
+        grad_Ry_P[k] *= env[k]
 
     return F0, grad_Rx_H, grad_Ry_H, grad_Rx_P, grad_Ry_P, U_final
 
@@ -204,6 +267,241 @@ def pulse_optimize_grape(U_target, J, T, N, learn_rate, max_iter, startParameter
     print("Final fidelity:", F)
     return Rx_H, Ry_H, Rx_P, Ry_P, F
 
+def pulse_optimize_grape_lbfgs(U_target, J, T, N,
+                                      H_x_H, H_y_H, H_x_P, H_y_P, H_J,
+                                      startParameters=None,
+                                      max_iter=1000,
+                                      lambda_smooth=1e-3,
+                                      delta_RF=0.05):
+    """
+    Optimize GRAPE pulses using L-BFGS-B with:
+        - Smoothness penalty
+        - Robustness to RF amplitude fluctuations
+    """
+
+    # ---- Initialize pulses ----
+    if startParameters is not None:
+        Rx_H, Ry_H, Rx_P, Ry_P = startParameters
+    else:
+        Rx_H = np.full(N, 0.2)
+        Ry_H = np.full(N, 0.2)
+        Rx_P = np.full(N, 0.2)
+        Ry_P = np.full(N, 0.2)
+
+    params0 = np.concatenate([Rx_H, Ry_H, Rx_P, Ry_P])
+
+    bounds = [(-1, 1)]*len(params0)  # amplitude bounds
+
+    # ---- Cost function wrapper ----
+    def grape_cost_robust_smooth(params):
+        # Unpack pulses
+        Rx_H = params[0:N]
+        Ry_H = params[N:2*N]
+        Rx_P = params[2*N:3*N]
+        Ry_P = params[3*N:4*N]
+
+        # ---- Robustness: average over small RF variations ----
+        perturbations = [1 - delta_RF, 1, 1 + delta_RF]
+        F_total = 0
+        grad_Rx_H_total = np.zeros(N)
+        grad_Ry_H_total = np.zeros(N)
+        grad_Rx_P_total = np.zeros(N)
+        grad_Ry_P_total = np.zeros(N)
+
+        for scale in perturbations:
+            Rx_H_s = Rx_H * scale
+            Ry_H_s = Ry_H * scale
+            Rx_P_s = Rx_P * scale
+            Ry_P_s = Ry_P * scale
+
+            F, gRxH, gRyH, gRxP, gRyP, _ = grape_grad_2channel(
+                Rx_H_s, Ry_H_s, Rx_P_s, Ry_P_s,
+                U_target, J, T, N,
+                H_x_H, H_y_H, H_x_P, H_y_P, H_J
+            )
+
+            F_total += F / len(perturbations)
+            grad_Rx_H_total += gRxH / len(perturbations) * scale
+            grad_Ry_H_total += gRyH / len(perturbations) * scale
+            grad_Rx_P_total += gRxP / len(perturbations) * scale
+            grad_Ry_P_total += gRyP / len(perturbations) * scale
+
+        # ---- Smoothness penalty ----
+        dRx_H = np.diff(Rx_H, prepend=Rx_H[0])
+        dRy_H = np.diff(Ry_H, prepend=Ry_H[0])
+        dRx_P = np.diff(Rx_P, prepend=Rx_P[0])
+        dRy_P = np.diff(Ry_P, prepend=Ry_P[0])
+
+        smooth_cost = lambda_smooth * (np.sum(dRx_H**2) + np.sum(dRy_H**2)
+                                       + np.sum(dRx_P**2) + np.sum(dRy_P**2))
+
+        grad_smooth_Rx_H = 2*lambda_smooth*dRx_H
+        grad_smooth_Ry_H = 2*lambda_smooth*dRy_H
+        grad_smooth_Rx_P = 2*lambda_smooth*dRx_P
+        grad_smooth_Ry_P = 2*lambda_smooth*dRy_P
+
+        # ---- Total cost and gradient ----
+        cost = 1 - F_total + smooth_cost
+        grad_flat = np.concatenate([
+            -grad_Rx_H_total + grad_smooth_Rx_H,
+            -grad_Ry_H_total + grad_smooth_Ry_H,
+            -grad_Rx_P_total + grad_smooth_Rx_P,
+            -grad_Ry_P_total + grad_smooth_Ry_P
+        ])
+
+        return cost, grad_flat
+
+    # ---- Run L-BFGS-B optimization ----
+    res = minimize(grape_cost_robust_smooth, params0,
+                   method='L-BFGS-B', jac=True, bounds=bounds,
+                   options={'maxiter': max_iter})
+
+    # ---- Extract pulses ----
+    Rx_H_opt = res.x[0:N]
+    Ry_H_opt = res.x[N:2*N]
+    Rx_P_opt = res.x[2*N:3*N]
+    Ry_P_opt = res.x[3*N:4*N]
+
+    # ---- Compute final fidelity & final unitary ----
+    F_final, _, _, _, _, U_final = grape_grad_2channel(
+        Rx_H_opt, Ry_H_opt, Rx_P_opt, Ry_P_opt,
+        U_target, J, T, N,
+        H_x_H, H_y_H, H_x_P, H_y_P, H_J
+    )
+
+    return Rx_H_opt, Ry_H_opt, Rx_P_opt, Ry_P_opt, F_final, U_final
+
+def pulse_optimize_grape_lbfgs_envelope(U_target, J, T, N,
+                                      H_x_H, H_y_H, H_x_P, H_y_P, H_J,
+                                      startParameters=None,
+                                      max_iter=1000,
+                                      lambda_smooth=1e-3,
+                                      delta_RF=0.05, gaus_rise_frac=0.15):
+    """
+    Optimize GRAPE pulses using L-BFGS-B with:
+        - Smoothness penalty
+        - Robustness to RF amplitude fluctuations
+        - Gaussian Square envelope
+    """
+
+    # ---- Initialize pulses ----
+    if startParameters is not None:
+        Rx_H, Ry_H, Rx_P, Ry_P = startParameters
+    else:
+        Rx_H = np.full(N, 0.2)
+        Ry_H = np.full(N, 0.2)
+        Rx_P = np.full(N, 0.2)
+        Ry_P = np.full(N, 0.2)
+
+    params0 = np.concatenate([Rx_H, Ry_H, Rx_P, Ry_P])
+
+    bounds = [(-1, 1)]*len(params0)  # amplitude bounds
+    
+    env = gaussiansquare_envelope(N, gaus_rise_frac)
+
+    # ---- Cost function wrapper (aka function to optimize) ----
+    def grape_cost_robust_smooth(params):
+        # Unpack pulses
+        Rx_H = params[0:N]
+        Ry_H = params[N:2*N]
+        Rx_P = params[2*N:3*N]
+        Ry_P = params[3*N:4*N]
+        
+        # Clip amplitude vector to avoid exceeding maximum amplitude of 100
+        Rx_H, Ry_H = clip_vector(Rx_H, Ry_H)
+        Rx_P, Ry_P = clip_vector(Rx_P, Ry_P)
+
+        # ---- Robustness: average over small RF variations ----
+        perturbations = [1 - delta_RF, 1, 1 + delta_RF]
+        F_total = 0
+        
+        # Prepare gradients to update
+        grad_Rx_H_total = np.zeros(N)
+        grad_Ry_H_total = np.zeros(N)
+        grad_Rx_P_total = np.zeros(N)
+        grad_Ry_P_total = np.zeros(N)
+
+        for scale in perturbations:
+            
+            # Detuned control values
+            Rx_H_scaled = Rx_H * scale
+            Ry_H_scaled = Ry_H * scale
+            Rx_P_scaled = Rx_P * scale
+            Ry_P_scaled = Ry_P * scale
+            
+            # Calculate gradient with detuned control values
+            F, gRxH, gRyH, gRxP, gRyP, _ = grape_grad_2channel_envelope(
+                Rx_H_scaled, Ry_H_scaled, Rx_P_scaled, Ry_P_scaled,
+                U_target, J, T, N,
+                H_x_H, H_y_H, H_x_P, H_y_P, H_J,
+                env
+            )
+
+            # Coalesce into gradient values to update control on iteration
+            F_total += F / len(perturbations)
+            grad_Rx_H_total += gRxH / len(perturbations) * scale
+            grad_Ry_H_total += gRyH / len(perturbations) * scale
+            grad_Rx_P_total += gRxP / len(perturbations) * scale
+            grad_Ry_P_total += gRyP / len(perturbations) * scale
+
+        # ---- Smoothness penalty ----
+        
+        # Smoothness penalties should be calculated on actual physical control values, apply the envelope
+        Rx_H_physical = env * Rx_H
+        Ry_H_physical = env * Ry_H
+        Rx_P_physical = env * Rx_P
+        Ry_P_physical = env * Ry_P
+        
+        # Calculate differences between adjacent control values
+        dRx_H = np.diff(Rx_H_physical, prepend=Rx_H_physical[0])
+        dRy_H = np.diff(Ry_H_physical, prepend=Ry_H_physical[0])
+        dRx_P = np.diff(Rx_P_physical, prepend=Rx_P_physical[0])
+        dRy_P = np.diff(Ry_P_physical, prepend=Ry_P_physical[0])
+
+        # If the differences are large, smooth_cost grows larger
+        smooth_cost = lambda_smooth * (np.sum(dRx_H**2) + np.sum(dRy_H**2)
+                                       + np.sum(dRx_P**2) + np.sum(dRy_P**2))
+
+        grad_smooth_Rx_H = 2*lambda_smooth*dRx_H
+        grad_smooth_Ry_H = 2*lambda_smooth*dRy_H
+        grad_smooth_Rx_P = 2*lambda_smooth*dRx_P
+        grad_smooth_Ry_P = 2*lambda_smooth*dRy_P
+
+        # ---- Total cost and gradient ----
+        cost = 1 - F_total + smooth_cost
+        grad_flat = np.concatenate([
+            -grad_Rx_H_total + grad_smooth_Rx_H,
+            -grad_Ry_H_total + grad_smooth_Ry_H,
+            -grad_Rx_P_total + grad_smooth_Rx_P,
+            -grad_Ry_P_total + grad_smooth_Ry_P
+        ])
+
+        return cost, grad_flat
+
+    # ---- Run L-BFGS-B optimization ----
+    res = minimize(grape_cost_robust_smooth, params0,
+                   method='L-BFGS-B', jac=True, bounds=bounds,
+                   options={'maxiter': max_iter})
+
+    # ---- Extract pulses ----
+    Rx_H_opt = res.x[0:N]
+    Ry_H_opt = res.x[N:2*N]
+    Rx_P_opt = res.x[2*N:3*N]
+    Ry_P_opt = res.x[3*N:4*N]
+    
+    # Make sure its physically possible ---> can lead to mismatch between what the l-bfgs optimizer got and actual results
+    Rx_H_opt, Ry_H_opt = clip_vector(Rx_H_opt, Ry_H_opt)
+    Rx_P_opt, Ry_P_opt = clip_vector(Rx_P_opt, Ry_P_opt)
+    
+    # ---- Compute final fidelity & final unitary ----
+    F_final, _, _, _, _, U_final = grape_grad_2channel_envelope(
+        Rx_H_opt, Ry_H_opt, Rx_P_opt, Ry_P_opt,
+        U_target, J, T, N,
+        H_x_H, H_y_H, H_x_P, H_y_P, H_J, env
+    )
+
+    return Rx_H_opt, Ry_H_opt, Rx_P_opt, Ry_P_opt, F_final, U_final
+
 def export_to_json_GRAPE_2channel(
     filename,
     title,
@@ -231,7 +529,7 @@ def export_to_json_GRAPE_2channel(
     Rx_P = np.asarray(Rx_P).flatten()
     Ry_P = np.asarray(Ry_P).flatten()
 
-    dt = totalpulsewidth / slices
+    dt = totalpulsewidth / slices * 1e6
 
     channel1_pulses = []
     channel2_pulses = []
@@ -287,9 +585,6 @@ def export_to_json_GRAPE_2channel(
     print(f"Pulse file saved to {filepath}")
     
 def plot_pulse_from_json(json_file):
-    """
-    Import pulse data from SpinQLab JSON format to plot.
-    """
 
     with open(json_file, "r") as f:
         data = json.load(f)
@@ -328,7 +623,7 @@ def plot_pulse_from_json(json_file):
     )
     axs[0].set_ylabel("Amplitude (%)")
     axs[0].set_title("Channel 1 - Hydrogen")
-    axs[0].set_xlim([None,None])
+    axs[0].set_xlim([0,None])
     axs[0].set_ylim([0,100])
     
     # Channel 2
@@ -343,7 +638,7 @@ def plot_pulse_from_json(json_file):
     axs[1].set_ylabel("Amplitude (%)")
     axs[1].set_xlabel("Time")
     axs[1].set_title("Channel 2 - Phosphorus")
-    axs[1].set_xlim([None,None])
+    axs[1].set_xlim([0,None])
     axs[1].set_ylim([0,100])
     
     # Phase colorbar
@@ -355,10 +650,6 @@ def plot_pulse_from_json(json_file):
     plt.show()
 
 def grab_state_matrix(matrix):
-    """
-    Edit SpinQLab Link output matrix from dictionary to numpy array matrix.
-    """
-    
     real = np.array(matrix["real"])
     imag = np.array(matrix["imag"])
     # Construct complex matrix
@@ -368,9 +659,6 @@ def grab_state_matrix(matrix):
     return rho
     
 def plot_density_matrix(rho):
-    """
-    Plot numpy array matrix for resulting state density matrices.
-    """
 
     n = rho.shape[0]
 
@@ -460,5 +748,59 @@ def plot_density_matrix(rho):
     # plt.tight_layout()
     plt.show()
     
-    
-    
+def plot_density_matrix_separate(rho):
+
+    n = rho.shape[0]
+
+    real = np.real(rho)
+    imag = np.imag(rho)
+
+    fig = plt.figure(figsize=(12,5))
+
+    ax1 = fig.add_subplot(121, projection='3d')
+    ax2 = fig.add_subplot(122, projection='3d')
+
+    axes = [ax1, ax2]
+
+    labels = ['00','01','10','11'][:n]
+
+    for ax, matrix, title in zip(
+        axes,
+        [real, imag],
+        ["Real part", "Imaginary part"]
+    ):
+
+        xpos, ypos = np.meshgrid(np.arange(n), np.arange(n))
+        xpos = xpos.flatten()
+        ypos = ypos.flatten()
+
+        values = matrix.flatten()
+
+        colors = ["red" if v < 0 else "blue" for v in values]
+
+        ax.bar3d(
+            xpos,
+            ypos,
+            np.zeros_like(values),
+            0.5,
+            0.5,
+            values,
+            color=colors,
+            shade=True
+        )
+
+        ax.set_xticks(range(n))
+        ax.set_yticks(range(n))
+
+        ax.set_xticklabels(labels)
+        ax.set_yticklabels(labels)
+
+        ax.set_xlabel("Column")
+        ax.set_ylabel("Row")
+        ax.set_zlabel("Value")
+        
+        ax.set_zlim(0,1)
+        ax.set_title(title)
+        ax.view_init(elev=25, azim=-55)
+
+    plt.show()

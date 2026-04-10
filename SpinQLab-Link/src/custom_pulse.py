@@ -20,14 +20,17 @@ def main():
     # pulse_sequence = []
     # load_pulses_from_json parses json file to array of pulse objects
     
-    pulse_sequence = load_pulses_from_json("pulses/CNOT_lbfgs_optimized_2.json")
-    # pulse_sequence = load_pulses_from_json("pulses/pulseCNOT_0.2.json")
-    # pulse_sequence.insert(0,Pulse(path=1, width=90, amplitude=100, phase=90, detuning=0))
-    # pulse_sequence.insert(0,Pulse(path=0, width=90, amplitude=100, phase=90, detuning=0))
+    if using_pulse:
+        pulse_sequence = load_pulses_from_json("pulses/CNOT_lbfgs_envelope_5.json")
+        # pulse_sequence = []
+        pulse_sequence.insert(0,Pulse(path=1, width=90, amplitude=100, phase=90, detuning=0))
+        pulse_sequence.insert(0,Pulse(path=0, width=90, amplitude=100, phase=90, detuning=0))
+    else:
+        pulse_sequence = load_pulses_from_json("pulses/CNOT_lbfgs_optimized_2.json")
     
-    with open("pulses/pulseCNOT_0.2.json", "r") as f:
-        data = json.load(f)
-    gate_from_json = json.dumps(data)
+    # with open("pulses/pulseCNOT_0.2.json", "r") as f:
+    #     data = json.load(f)
+    # gate_from_json = json.dumps(data)
 
     if using_pulse:
         exp_circuit_layer_para.pulses = pulse_sequence
@@ -37,7 +40,7 @@ def main():
         # circuit << Gate(type='H', qubitIndex=0)
         circuit << Gate(type='X', qubitIndex=1)
         circuit << Gate(type='X', qubitIndex=0)
-        circuit << CustomGate(type='X', customType='andre_custom_gate', controlQubit=0, qubitIndex=1, pulses=pulse_sequence)
+        circuit << CustomGate(type='CNOT', customType='andre_custom_gate', pulses=pulse_sequence)
         # circuit << CustomGate(type='I', customType='andre_custom_gate', controlQubit=0, qubitIndex=1, gateJson=gate_from_json)
         # circuit << CustomGate(type='I', customType='I_custom_gate', qubitIndex=1, pulses=[Pulse(path=0, width = 80, amplitude = 100, phase = 90, detuning = 0)])
         circuit.print_circuit()
