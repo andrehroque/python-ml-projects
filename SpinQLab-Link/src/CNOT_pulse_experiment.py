@@ -15,6 +15,23 @@ def main():
 
     exp_circuit_layer, exp_circuit_layer_para = spinqlablink.register_experiment(ExperimentType.CIRCUIT_LAYER_EXPERIMENT)
     
+    PULSE_JSON     = "pulses/CNOT_lbfgs_envelope_5.json"
+    LOG_FILE       = "data/CNOT_logs.txt"
+    INITIAL_STATE  = "|10>" # Change this to test CNOT for each initial state
+    CNOT_TRUTH_TABLE = {
+    "|00>": "|00>",
+    "|01>": "|01>",
+    "|10>": "|11>",
+    "|11>": "|10>",
+    }
+    EXPECTED_STATE = CNOT_TRUTH_TABLE[INITIAL_STATE]
+    STATE_PREP = {
+    "|00>": [],
+    "|01>": [Pulse(path=1, width=90, amplitude=100, phase=90, detuning=0)],
+    "|10>": [Pulse(path=0, width=90, amplitude=100, phase=90, detuning=0)],
+    "|11>": [Pulse(path=1, width=90, amplitude=100, phase=90, detuning=0),
+             Pulse(path=0, width=90, amplitude=100, phase=90, detuning=0)],
+    }
     # Circuit layer experiment creates pps automatically
 
     using_pulse = True
@@ -24,8 +41,7 @@ def main():
     if using_pulse:
         pulse_sequence = load_pulses_from_json("pulses/CNOT_lbfgs_envelope_5.json")
         # pulse_sequence = []
-        pulse_sequence.insert(0,Pulse(path=1, width=90, amplitude=100, phase=90, detuning=0))
-        pulse_sequence.insert(0,Pulse(path=0, width=90, amplitude=100, phase=90, detuning=0))
+        pulse_sequence = STATE_PREP[INITIAL_STATE] + pulse_sequence
     else:
         pulse_sequence = load_pulses_from_json("pulses/CNOT_lbfgs_optimized_2.json")
     
@@ -65,9 +81,7 @@ def main():
     spinqlablink.wait_for_experiment_completion()
 
     exp_info = spinqlablink.get_experiment_result()
-
     spinqlablink.deregister_experiment()
-
     spinqlablink.disconnect()
 
     if "result" in exp_info:
@@ -75,8 +89,8 @@ def main():
         for key, value in exp_result.items():
             if key != "graph":
                 print(f"{key}: {value}")
-
         print_graph(exp_info["result"])
+        write_log(LOG_FILE, PULSE_JSON, INITIAL_STATE, EXPECTED_STATE, exp_result)
     else:
         print("Experiment failed")
 

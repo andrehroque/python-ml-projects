@@ -1,5 +1,6 @@
-import json, numpy as np, matplotlib.pyplot as plt, matplotlib.colors as mcolors
+import json, os, numpy as np, matplotlib.pyplot as plt, matplotlib.colors as mcolors
 from spinqlablink import Pulse
+from datetime import datetime
 
 def load_pulses_from_json(filename):
     with open(filename, "r") as f:
@@ -76,4 +77,43 @@ def plot_pulse_from_json(json_file):
     cbar.set_label("Phase (deg)")
 
     plt.show()
-    
+
+def write_log(log_file: str, pulse_json_path: str, initial_state: str, expected_state: str, exp_result: dict):
+    """
+    Append experiment result to a log file in the standard format.
+
+    Args:
+        log_file:         Path to the output .txt log file.
+        pulse_json_path:  Path to the pulse JSON file.
+        initial_state:    e.g. '|00>', '|10>', etc.
+        expected_state:   e.g. '|00>', '|11>', etc.
+        exp_result:       The result dict from spinqlablink.get_experiment_result()['result']
+    """
+    pulse_name = os.path.splitext(os.path.basename(pulse_json_path))[0]
+
+    with open(pulse_json_path, "r") as f:
+        pulse_data = json.load(f)
+    desc = pulse_data["description"]
+    fidelity        = desc["FIDELITY"]
+    totalpulsewidth = desc["TOTALPULSEWIDTH"]
+    slices          = desc["SLICES"]
+
+    os.makedirs(os.path.dirname(log_file), exist_ok=True)
+
+    with open(log_file, "a", encoding="utf-8") as f:
+        if initial_state == "|00>":
+            f.write(f"\n{'-' * 102}\n\n")
+            f.write(f"PULSE: {pulse_name}\n\n")
+            f.write(f"FIDELITY: {fidelity}\n")
+            f.write(f"TOTALPULSEWIDTH: {totalpulsewidth}\n")
+            f.write(f"SLICES: {slices}\n")
+
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S,%f")[:-3]
+        f.write(f"\nEstado inicial: {initial_state}\n")
+        f.write(f"Estado esperado: {expected_state}\n\n")
+
+        for key, value in exp_result.items():
+            if key != "graph":
+                f.write(f"{key}: {value}\n")
+
+        f.write("Chart data plotting completed\n")
