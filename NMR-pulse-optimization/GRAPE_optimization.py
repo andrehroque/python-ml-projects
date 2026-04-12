@@ -804,3 +804,29 @@ def plot_density_matrix_separate(rho):
         ax.view_init(elev=25, azim=-55)
 
     plt.show()
+    
+    
+J = 696
+dt = 2e-6
+t = 2.1e-3
+N = int(t/dt)
+
+alpha = 0.00001
+start_params = (np.full(N,alpha), np.full(N,alpha),
+                np.full(N,alpha), np.full(N,alpha))
+
+Rx_H, Ry_H, Rx_P, Ry_P, F_final, U_final = pulse_optimize_grape_lbfgs_envelope(
+    U_cnot, J, t, N,
+    H_x_H, H_y_H, H_x_P, H_y_P, H_J,
+    startParameters=start_params,
+    max_iter=3000,
+    lambda_smooth=5e-3,
+    delta_RF=0.05,
+    gaus_rise_frac=0.1
+)
+
+print("Final fidelity:", F_final)
+
+export_to_json_GRAPE_2channel("CNOT_lbfgs_envelope_3","CNOT pulse 2.1 ms, 0.00001 minimum start, l-bfgs and envelope=0.1",F_final,t,N,Rx_H,Ry_H,Rx_P,Ry_P,"andreroque")
+
+plot_pulse_from_json("pulses/CNOT_lbfgs_envelope_3.json")
