@@ -115,5 +115,5 @@ def write_log(log_file: str, pulse_json_path: str, initial_state: str, expected_
         for key, value in exp_result.items():
             if key != "graph":
                 f.write(f"{key}: {value}\n")
-
-        f.write("Chart data plotting completed\n")
+                
+                

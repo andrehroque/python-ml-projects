@@ -1,9 +1,10 @@
-
 # Gradient Ascent - GRAPE - different channels
 
 import numpy as np
 import os
 import json
+import re
+import ast
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 from scipy.optimize import minimize
@@ -382,6 +383,18 @@ def pulse_optimize_grape_lbfgs_envelope(U_target, J, T, N,
         - Smoothness penalty
         - Robustness to RF amplitude fluctuations
         - Gaussian Square envelope
+        
+    Args:
+        U_target: target unitary matrix of result state to achieve
+        J: J-coupling constant
+        T: total pulse duration
+        N: number of segmentations of pulse duration
+        H_x_H, H_y_H, H_x_P, H_y_P: fixed Hamiltionians
+        startParameters: initial state if not optimizing pulse from scratch
+        max_iter: maximum permitted iterations for scipy.minimize function
+        lambda_smooth: smoothing factor
+        delta_RF: RF field perturbation factor (percentage)
+        gaus_rise_frac: gaussian square rising section fraction of whole pulse duration
     """
 
     # ---- Initialize pulses ----
@@ -399,7 +412,7 @@ def pulse_optimize_grape_lbfgs_envelope(U_target, J, T, N,
     
     env = gaussiansquare_envelope(N, gaus_rise_frac)
 
-    # ---- Cost function wrapper (aka function to optimize) ----
+    # ---- Cost function wrapper ----
     def grape_cost_robust_smooth(params):
         # Unpack pulses
         Rx_H = params[0:N]
@@ -407,7 +420,7 @@ def pulse_optimize_grape_lbfgs_envelope(U_target, J, T, N,
         Rx_P = params[2*N:3*N]
         Ry_P = params[3*N:4*N]
         
-        # Clip amplitude vector to avoid exceeding maximum amplitude of 100
+        # Clip amplitude vector to make sure that exceeding maximum amplitude of 100 is avoided
         Rx_H, Ry_H = clip_vector(Rx_H, Ry_H)
         Rx_P, Ry_P = clip_vector(Rx_P, Ry_P)
 
@@ -805,28 +818,74 @@ def plot_density_matrix_separate(rho):
 
     plt.show()
     
+def parse_pulse_experiments(filepath: str, pulse_name: str) -> list[dict]:
+    with open(filepath, "r", encoding="utf-8") as f:
+        log_text = f.read()
+
+    # Split on any pulse header, keeping the delimiter
+    pulse_header = r'(?:NEW\s+)?(?:PULSE|PULSO):?\s*(?!WIDTH)'
+    blocks = re.split(rf'({pulse_header}\S+.*?\n)', log_text)
     
-J = 696
-dt = 2e-6
-t = 2.1e-3
-N = int(t/dt)
+    # Find the block whose header matches pulse_name exactly
+    pulse_block = None
+    for i, chunk in enumerate(blocks):
+        name_match = re.match(rf'{pulse_header}(\S+)', chunk.strip())
+        if name_match and name_match.group(1).strip() == pulse_name:
+            # The content follows immediately after the header
+            pulse_block = blocks[i + 1] if i + 1 < len(blocks) else ""
+            break
 
-alpha = 0.00001
-start_params = (np.full(N,alpha), np.full(N,alpha),
-                np.full(N,alpha), np.full(N,alpha))
+    if pulse_block is None:
+        print(f"Pulse '{pulse_name}' not found in '{filepath}'.")
+        return []
 
-Rx_H, Ry_H, Rx_P, Ry_P, F_final, U_final = pulse_optimize_grape_lbfgs_envelope(
-    U_cnot, J, t, N,
-    H_x_H, H_y_H, H_x_P, H_y_P, H_J,
-    startParameters=start_params,
-    max_iter=3000,
-    lambda_smooth=5e-3,
-    delta_RF=0.05,
-    gaus_rise_frac=0.1
-)
+    results = []
+    for block in re.split(r'Estado inicial:', pulse_block)[1:]:
+        state_match    = re.search(r'(\|[01]{2}>)', block)
+        expected_match = re.search(r'Estado esperado:\s*(\|[01]{2}>)', block)
+        matrix_match   = re.search(r"matrix:\s*(\{.*?\})\s*\n", block)
+        prob_match     = re.search(r"probability:\s*(\[.*?\])\s*\n", block)
 
-print("Final fidelity:", F_final)
+        if not all([state_match, expected_match, matrix_match, prob_match]):
+            continue
 
-export_to_json_GRAPE_2channel("CNOT_lbfgs_envelope_3","CNOT pulse 2.1 ms, 0.00001 minimum start, l-bfgs and envelope=0.1",F_final,t,N,Rx_H,Ry_H,Rx_P,Ry_P,"andreroque")
+        results.append({
+            "initial_state":  state_match.group(1),
+            "expected_state": expected_match.group(1),
+            "matrix":         ast.literal_eval(matrix_match.group(1)),
+            "probability":    ast.literal_eval(prob_match.group(1)),
+        })
 
-plot_pulse_from_json("pulses/CNOT_lbfgs_envelope_3.json")
+    return results
+
+def calc_gate_fidelity(experiments: list[dict]) -> float:
+    """
+    Calculate experimental gate fidelity from the 4 state experiments.
+    
+    Picks the probability of the expected output state for each experiment:
+        |00> -> |00>  : prob[0]
+        |10> -> |11>  : prob[3]
+        |01> -> |01>  : prob[1]
+        |11> -> |10>  : prob[2]
+
+    Args:
+        experiments: Output of parse_pulse_experiments (must contain all 4 states).
+
+    Returns:
+        Gate fidelity as a float.
+    """
+    # Map each expected state to its index in the probability array
+    state_to_index = {"|00>": 0, "|01>": 1, "|10>": 2, "|11>": 3}
+
+    if len(experiments) != 4:
+        raise ValueError(f"Expected 4 experiments, got {len(experiments)}.")
+
+    total = 0.0
+    for exp in experiments:
+        expected = exp["expected_state"]
+        idx = state_to_index[expected]
+        total += exp["probability"][idx]
+
+    fidelity = total / 4
+    print(f"Experimental Gate Fidelity: {fidelity:.6f}")
+    return fidelity
