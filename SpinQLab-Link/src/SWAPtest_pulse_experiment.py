@@ -9,6 +9,7 @@ def main():
     
     # DF ID: 192.168.4.34
     # DEEC ID: 10.206.88.204
+    
     spinqlablink = SpinQLabLink("10.206.88.204", 8181, "andreroque", "anyword")
     spinqlablink.connect()
 
@@ -18,16 +19,16 @@ def main():
 
     exp_circuit_layer, exp_circuit_layer_para = spinqlablink.register_experiment(ExperimentType.CIRCUIT_LAYER_EXPERIMENT)
     
-    PULSE_JSON     = "pulses/CNOT/CNOT_lbfgs_envelope_5.json"
-    LOG_FILE       = "data/CNOT_logs.txt"
-    INITIAL_STATE  = "|10>" # Change this to test gate for each initial state
-    CNOT_TRUTH_TABLE = {
-    "|00>": "|00>",
-    "|01>": "|01>",
-    "|10>": "|11>",
-    "|11>": "|10>",
+    PULSE_JSON     = "pulses/SWAPtest/SWAPtest_tstudy13.json"
+    LOG_FILE       = "data/SWAPtest_logs.txt"
+    INITIAL_STATE  = "|11>" # Change this to test gate for each initial state
+    SWAPTEST_TRUTH_TABLE = {
+    "|00>": "|00>+|10>",
+    "|01>": "|01>+|11>",
+    "|10>": "|01>-|11>",
+    "|11>": "|00>-|10>",
     }
-    EXPECTED_STATE = CNOT_TRUTH_TABLE[INITIAL_STATE]
+    EXPECTED_STATE = SWAPTEST_TRUTH_TABLE[INITIAL_STATE]
     STATE_PREP = {
     "|00>": [],
     "|01>": [Pulse(path=1, width=90, amplitude=100, phase=90, detuning=0)],

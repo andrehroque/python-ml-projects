@@ -18,12 +18,12 @@ np.set_printoptions(linewidth=200, precision=4, suppress=True)
 pauli_x = Pauli('X')
 pauli_y = Pauli('Y')
 pauli_z = Pauli('Z')
-identity = Pauli('I')
+identity2 = Pauli('I')
 
 X = pauli_x.to_matrix()
 Y = pauli_y.to_matrix()
 Z = pauli_z.to_matrix()
-I = identity.to_matrix()
+I = identity2.to_matrix()
 
 Ix1 = np.kron(X/2,I)
 Iy1 = np.kron(Y/2,I)
@@ -46,6 +46,14 @@ U_cz = np.array([[1,0,0,0],
                 [0,1,0,0],
                 [0,0,1,0],
                 [0,0,0,-1]], dtype=np.complex128)
+
+U_swap =  np.array([[1,0,0,0],
+                    [0,0,1,0],
+                    [0,1,0,0],
+                    [0,0,0,1]], dtype=np.complex128)
+
+Hadamard = 1/np.sqrt(2) * np.array([[1,1],
+                                    [1,-1]], dtype=np.complex128)
 
 # constants
 n = 2
@@ -525,7 +533,8 @@ def export_to_json_GRAPE_2channel(
     Ry_H,
     Rx_P,
     Ry_P,
-    owner="Unknown"
+    owner="Unknown",
+    folderpath = ""
 ):
     """
     Export GRAPE two-channel pulse to SpinQLab JSON format.
@@ -533,7 +542,7 @@ def export_to_json_GRAPE_2channel(
     """
 
     # Ensure the pulses directory exists
-    folder = "pulses"
+    folder = "pulses/"+folderpath
     os.makedirs(folder, exist_ok=True)
     filepath = os.path.join(folder, filename + ".json")
 
@@ -858,7 +867,7 @@ def parse_pulse_experiments(filepath: str, pulse_name: str) -> list[dict]:
 
     return results
 
-def calc_gate_fidelity(experiments: list[dict]) -> float:
+def calc_CNOT_fidelity(experiments: list[dict]) -> float:
     """
     Calculate experimental gate fidelity from the 4 state experiments.
     
