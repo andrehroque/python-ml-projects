@@ -18,9 +18,9 @@ def main():
 
     exp_circuit_layer, exp_circuit_layer_para = spinqlablink.register_experiment(ExperimentType.CIRCUIT_LAYER_EXPERIMENT)
     
-    PULSE_JSON     = "pulses/CNOT/CNOT_lbfgs_envelope_5.json"
+    PULSE_JSON     = "pulses/CNOT/CNOT_tstudy3.json"
     LOG_FILE       = "data/CNOT_logs.txt"
-    INITIAL_STATE  = "|10>" # Change this to test gate for each initial state
+    INITIAL_STATE  = "|11>" # Change this to test gate for each initial state
     CNOT_TRUTH_TABLE = {
     "|00>": "|00>",
     "|01>": "|01>",
@@ -30,10 +30,10 @@ def main():
     EXPECTED_STATE = CNOT_TRUTH_TABLE[INITIAL_STATE]
     STATE_PREP = {
     "|00>": [],
-    "|01>": [Pulse(path=1, width=90, amplitude=100, phase=90, detuning=0)],
-    "|10>": [Pulse(path=0, width=90, amplitude=100, phase=90, detuning=0)],
-    "|11>": [Pulse(path=1, width=90, amplitude=100, phase=90, detuning=0),
-             Pulse(path=0, width=90, amplitude=100, phase=90, detuning=0)],
+    "|01>": [Pulse(path=1, width=80, amplitude=100, phase=90, detuning=0)],
+    "|10>": [Pulse(path=0, width=80, amplitude=100, phase=90, detuning=0)],
+    "|11>": [Pulse(path=1, width=80, amplitude=100, phase=90, detuning=0),
+             Pulse(path=0, width=80, amplitude=100, phase=90, detuning=0)],
     }
     # Circuit layer experiment creates pps automatically
 

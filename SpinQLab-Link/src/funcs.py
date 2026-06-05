@@ -78,25 +78,39 @@ def plot_pulse_from_json(json_file):
 
     plt.show()
 
-def write_log(log_file: str, pulse_json_path: str, initial_state: str, expected_state: str, exp_result: dict):
+def write_log(log_file: str, pulse_json_paths, initial_state: str, expected_state: str, exp_result: dict):
     """
     Append experiment result to a log file in the standard format.
+    Accepts a single JSON path or a list of JSON paths for multi-pulse circuits.
 
     Args:
-        log_file:         Path to the output .txt log file.
-        pulse_json_path:  Path to the pulse JSON file.
-        initial_state:    e.g. '|00>', '|10>', etc.
-        expected_state:   e.g. '|00>', '|11>', etc.
-        exp_result:       The result dict from spinqlablink.get_experiment_result()['result']
+        log_file:          Path to the output .txt log file.
+        pulse_json_paths:  Path or list of paths to pulse JSON files.
+        initial_state:     e.g. '|00>', '|10>', etc.
+        expected_state:    e.g. '|00>', '|11>', etc.
+        exp_result:        The result dict from spinqlablink.get_experiment_result()['result']
     """
-    pulse_name = os.path.splitext(os.path.basename(pulse_json_path))[0]
+    # Normalise to list
+    if isinstance(pulse_json_paths, str):
+        pulse_json_paths = [pulse_json_paths]
 
-    with open(pulse_json_path, "r") as f:
-        pulse_data = json.load(f)
-    desc = pulse_data["description"]
-    fidelity        = desc["FIDELITY"]
-    totalpulsewidth = desc["TOTALPULSEWIDTH"]
-    slices          = desc["SLICES"]
+    # Build pulse name from all filenames joined with '+'
+    pulse_name = "+".join(
+        os.path.splitext(os.path.basename(p))[0] for p in pulse_json_paths
+    )
+
+    # Read metadata from first pulse file (fidelity/width/slices of full sequence
+    # are not trivially combinable, so we log each file's metadata separately)
+    meta_lines = []
+    for p in pulse_json_paths:
+        with open(p, "r") as f:
+            desc = json.load(f)["description"]
+        meta_lines.append(
+            f"  {os.path.splitext(os.path.basename(p))[0]}: "
+            f"FIDELITY={desc['FIDELITY']}  "
+            f"TOTALPULSEWIDTH={desc['TOTALPULSEWIDTH']}  "
+            f"SLICES={desc['SLICES']}"
+        )
 
     os.makedirs(os.path.dirname(log_file), exist_ok=True)
 
@@ -104,11 +118,10 @@ def write_log(log_file: str, pulse_json_path: str, initial_state: str, expected_
         if initial_state == "|00>":
             f.write(f"\n{'-' * 102}\n\n")
             f.write(f"PULSE: {pulse_name}\n\n")
-            f.write(f"FIDELITY: {fidelity}\n")
-            f.write(f"TOTALPULSEWIDTH: {totalpulsewidth}\n")
-            f.write(f"SLICES: {slices}\n")
+            for line in meta_lines:
+                f.write(line + "\n")
+            f.write("\n")
 
-        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S,%f")[:-3]
         f.write(f"\nEstado inicial: {initial_state}\n")
         f.write(f"Estado esperado: {expected_state}\n\n")
 

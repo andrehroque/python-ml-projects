@@ -19,7 +19,10 @@ def main():
 
     exp_circuit_layer, exp_circuit_layer_para = spinqlablink.register_experiment(ExperimentType.CIRCUIT_LAYER_EXPERIMENT)
     
-    PULSE_JSON     = "pulses/SWAPtest/SWAPtest_tstudy13.json"
+    PULSE_JSONS     = [
+        "pulses/CNOT/CNOT_tstudy3.json",
+        # "pulses/Hadamard0/Hadamard0_tstudy10.json"
+        ]
     LOG_FILE       = "data/SWAPtest_logs.txt"
     INITIAL_STATE  = "|11>" # Change this to test gate for each initial state
     SWAPTEST_TRUTH_TABLE = {
@@ -31,23 +34,29 @@ def main():
     EXPECTED_STATE = SWAPTEST_TRUTH_TABLE[INITIAL_STATE]
     STATE_PREP = {
     "|00>": [],
-    "|01>": [Pulse(path=1, width=90, amplitude=100, phase=90, detuning=0)],
-    "|10>": [Pulse(path=0, width=90, amplitude=100, phase=90, detuning=0)],
-    "|11>": [Pulse(path=1, width=90, amplitude=100, phase=90, detuning=0),
-             Pulse(path=0, width=90, amplitude=100, phase=90, detuning=0)],
+    "|01>": [Pulse(path=1, width=80, amplitude=100, phase=90, detuning=0)],
+    "|10>": [Pulse(path=0, width=80, amplitude=100, phase=90, detuning=0)],
+    "|11>": [Pulse(path=1, width=80, amplitude=100, phase=90, detuning=0),
+             Pulse(path=0, width=80, amplitude=100, phase=90, detuning=0)],
     }
     # Circuit layer experiment creates pps automatically
 
     using_pulse = True
-    # pulse_sequence = []
+    pulse_sequence = []
+    Hadamard_sequence = [Pulse(path=0, width=40, amplitude=100, phase=90, detuning=0),Pulse(path=0, width=80, amplitude=100, phase=0, detuning=0)]
     # load_pulses_from_json parses json file to array of pulse objects
     
     if using_pulse:
-        pulse_sequence = load_pulses_from_json(PULSE_JSON)
-        # pulse_sequence = []
+        for pj in PULSE_JSONS:
+            
+            pulse_sequence += load_pulses_from_json(pj)
+            
         pulse_sequence = STATE_PREP[INITIAL_STATE] + pulse_sequence
+        pulse_sequence = pulse_sequence + Hadamard_sequence
     else:
-        pulse_sequence = load_pulses_from_json("pulses/CNOT_lbfgs_optimized_2.json")
+        for pj in PULSE_JSONS:
+            
+            pulse_sequence += load_pulses_from_json(pj)
     
     # with open("pulses/pulseCNOT_0.2.json", "r") as f:
     #     data = json.load(f)
@@ -94,7 +103,7 @@ def main():
             if key != "graph":
                 print(f"{key}: {value}")
         print_graph(exp_info["result"])
-        write_log(LOG_FILE, PULSE_JSON, INITIAL_STATE, EXPECTED_STATE, exp_result)
+        write_log(LOG_FILE, PULSE_JSONS, INITIAL_STATE, EXPECTED_STATE, exp_result)
     else:
         print("Experiment failed")
 
