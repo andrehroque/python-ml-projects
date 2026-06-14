@@ -38,7 +38,7 @@ def main():
     }
     # Circuit layer experiment creates pps automatically
 
-    using_pulse = True
+    using_pulse = False
     # pulse_sequence = []
     # load_pulses_from_json parses json file to array of pulse objects
     
@@ -47,7 +47,7 @@ def main():
         # pulse_sequence = []
         pulse_sequence = STATE_PREP[INITIAL_STATE] + pulse_sequence
     else:
-        pulse_sequence = load_pulses_from_json("pulses/CNOT_lbfgs_optimized_2.json")
+        pulse_sequence = load_pulses_from_json("pulses/Hadamard0/Hadamard0_tstudy14.json")
     
     # with open("pulses/pulseCNOT_0.2.json", "r") as f:
     #     data = json.load(f)
@@ -59,9 +59,10 @@ def main():
     else:
         circuit = Circuit(2)
         # circuit << Gate(type='H', qubitIndex=0)
-        circuit << Gate(type='X', qubitIndex=1)
-        circuit << Gate(type='X', qubitIndex=0)
-        circuit << CustomGate(type='CNOT', customType='andre_custom_gate', pulses=pulse_sequence)
+        circuit << Gate(type='X', qubitIndex=1, timeslot=0)
+        circuit << Gate(type='X', qubitIndex=0, timeslot=0)
+        circuit << Gate(type='H', qubitIndex=0, timeslot=1)
+        # circuit << CustomGate(type='CNOT', customType='andre_custom_gate', pulses=pulse_sequence)
         # circuit << CustomGate(type='I', customType='andre_custom_gate', controlQubit=0, qubitIndex=1, gateJson=gate_from_json)
         # circuit << CustomGate(type='I', customType='I_custom_gate', qubitIndex=1, pulses=[Pulse(path=0, width = 80, amplitude = 100, phase = 90, detuning = 0)])
         circuit.print_circuit()

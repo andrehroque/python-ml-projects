@@ -20,7 +20,7 @@ def main():
     exp_circuit_layer, exp_circuit_layer_para = spinqlablink.register_experiment(ExperimentType.CIRCUIT_LAYER_EXPERIMENT)
     
     PULSE_JSONS     = [
-        "pulses/CNOT/CNOT_tstudy3.json",
+        "pulses/SWAPtest/SWAPtest_composite.json",
         # "pulses/Hadamard0/Hadamard0_tstudy10.json"
         ]
     LOG_FILE       = "data/SWAPtest_logs.txt"
@@ -70,7 +70,9 @@ def main():
         # circuit << Gate(type='H', qubitIndex=0)
         circuit << Gate(type='X', qubitIndex=1)
         circuit << Gate(type='X', qubitIndex=0)
-        circuit << CustomGate(type='CNOT', customType='andre_custom_gate', pulses=pulse_sequence)
+        circuit << Gate(type='CNOT', qubitIndex=1, controlQubit=0)
+        circuit << Gate(type='H', qubitIndex=0, timeslot=2)
+        # circuit << CustomGate(type='CNOT', customType='andre_custom_gate', pulses=pulse_sequence)
         # circuit << CustomGate(type='I', customType='andre_custom_gate', controlQubit=0, qubitIndex=1, gateJson=gate_from_json)
         # circuit << CustomGate(type='I', customType='I_custom_gate', qubitIndex=1, pulses=[Pulse(path=0, width = 80, amplitude = 100, phase = 90, detuning = 0)])
         circuit.print_circuit()

@@ -898,3 +898,52 @@ def calc_CNOT_fidelity(experiments: list[dict]) -> float:
     fidelity = total / 4
     print(f"Experimental Gate Fidelity: {fidelity:.6f}")
     return fidelity
+
+def calc_fidelity_from_matrix(experiments: list[dict], U_target: np.ndarray) -> float:
+    """
+    Calculate experimental gate fidelity using density matrix trace overlap.
+    
+    For each initial state |i>, constructs the experimental density matrix rho
+    from the measured matrix, then computes:
+    
+        F = (1/N) * sum_i Tr(rho_i_exp @ rho_i_ideal)
+    
+    where rho_i_ideal = U_target |i><i| U_target†
+    
+    Args:
+        experiments: Output of parse_pulse_experiments.
+        U_target:    Ideal target unitary (d x d numpy array).
+    
+    Returns:
+        Gate fidelity as a float.
+    """
+    # Map state label to its computational basis index
+    state_to_index = {
+        "|00>": 0, "|01>": 1, "|10>": 2, "|11>": 3,
+        "|000>": 0, "|001>": 1, "|010>": 2, "|011>": 3,
+        "|100>": 4, "|101>": 5, "|110>": 6, "|111>": 7,
+    }
+
+    d = U_target.shape[0]
+    total = 0.0
+
+    for exp in experiments:
+        # Reconstruct experimental density matrix from log
+        real = np.array(exp["matrix"]["real"]).reshape(d, d)
+        imag = np.array(exp["matrix"]["imag"]).reshape(d, d)
+        rho_exp = real + 1j * imag
+
+        # Build ideal output density matrix: rho_ideal = U |i><i| U†
+        i = state_to_index[exp["initial_state"]]
+        psi_in = np.zeros(d, dtype=np.complex128)
+        psi_in[i] = 1.0
+        psi_out = U_target @ psi_in                      # ideal output state
+        rho_ideal = np.outer(psi_out, psi_out.conj())    # |psi_out><psi_out|
+
+        # Trace overlap
+        overlap = np.real(np.trace(rho_ideal @ rho_exp))
+        total += overlap
+
+    fidelity = total / len(experiments)
+    print(f"Experimental Gate Fidelity (trace): {fidelity:.6f}")
+    return fidelity
