@@ -43,16 +43,21 @@ def main():
 
     using_pulse = True
     pulse_sequence = []
-    Hadamard_sequence = [Pulse(path=0, width=40, amplitude=100, phase=90, detuning=0),Pulse(path=0, width=80, amplitude=100, phase=0, detuning=0)]
+    Hadamard0_sequence = [Pulse(path=0, width=40, amplitude=100, phase=90, detuning=0),Pulse(path=0, width=80, amplitude=100, phase=0, detuning=0)]
+    Hadamard1_sequence = [Pulse(path=1, width=40, amplitude=100, phase=90, detuning=0),Pulse(path=1, width=80, amplitude=100, phase=0, detuning=0)]
     # load_pulses_from_json parses json file to array of pulse objects
     
     if using_pulse:
         for pj in PULSE_JSONS:
             
             pulse_sequence += load_pulses_from_json(pj)
-            
+        
+        # pulse_sequence = Hadamard0_sequence + pulse_sequence # Apply Hadamard to Q0
+        # pulse_sequence = Hadamard1_sequence + pulse_sequence # Apply Hadamard to Q1
         pulse_sequence = STATE_PREP[INITIAL_STATE] + pulse_sequence
-        pulse_sequence = pulse_sequence + Hadamard_sequence
+        # pulse_sequence = pulse_sequence + Hadamard0_sequence
+
+        
     else:
         for pj in PULSE_JSONS:
             

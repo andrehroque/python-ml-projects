@@ -37,7 +37,7 @@ def main():
     }
     # Circuit layer experiment creates pps automatically
 
-    using_pulse = True
+    using_pulse = False
     # pulse_sequence = []
     # load_pulses_from_json parses json file to array of pulse objects
     

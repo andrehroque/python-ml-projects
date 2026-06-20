@@ -32,6 +32,13 @@ Ix2 = np.kron(I,X/2)
 Iy2 = np.kron(I,Y/2)
 Iz2 = np.kron(I,Z/2)
 
+SINGLE_STATES = {
+    "0": np.array([1, 0], dtype=np.complex128),
+    "1": np.array([0, 1], dtype=np.complex128),
+    "+": np.array([1, 1], dtype=np.complex128) / np.sqrt(2),
+    "-": np.array([1, -1], dtype=np.complex128) / np.sqrt(2),
+}
+
 U_cnot = np.array([[1,0,0,0],
                    [0,1,0,0],
                    [0,0,0,1],
@@ -523,6 +530,17 @@ def pulse_optimize_grape_lbfgs_envelope(U_target, J, T, N,
 
     return Rx_H_opt, Ry_H_opt, Rx_P_opt, Ry_P_opt, F_final, U_final
 
+def hard_pulse(axis, angle_deg, dt_us):
+    duration = angle_deg / 180 * 80.0  # after calibration
+
+    N = round(duration / dt_us)
+
+    if axis.upper() == "X":
+        return np.ones(N), np.zeros(N)
+
+    if axis.upper() == "Y":
+        return np.zeros(N), np.ones(N)
+    
 def export_to_json_GRAPE_2channel(
     filename,
     title,
@@ -671,6 +689,44 @@ def plot_pulse_from_json(json_file):
 
     plt.show()
 
+def load_controls_from_json(filename):
+
+    with open(filename, "r") as f:
+        data = json.load(f)
+
+    ch1 = data["pulse"]["channel1_pulse"]
+    ch2 = data["pulse"]["channel2_pulse"]
+    N = data["description"]["SLICES"]
+    T = data["description"]["TOTALPULSEWIDTH"]
+    
+    Rx_H = []
+    Ry_H = []
+    Rx_P = []
+    Ry_P = []
+
+    for p in ch1:
+        amp = p["amplitude"] / 100.0
+        phase = np.radians(p["phase"])
+
+        Rx_H.append(amp * np.cos(phase))
+        Ry_H.append(amp * np.sin(phase))
+
+    for p in ch2:
+        amp = p["amplitude"] / 100.0
+        phase = np.radians(p["phase"])
+
+        Rx_P.append(amp * np.cos(phase))
+        Ry_P.append(amp * np.sin(phase))
+
+    return (
+        N,
+        T,
+        np.array(Rx_H),
+        np.array(Ry_H),
+        np.array(Rx_P),
+        np.array(Ry_P)
+    )
+
 def grab_state_matrix(matrix):
     real = np.array(matrix["real"])
     imag = np.array(matrix["imag"])
@@ -679,7 +735,7 @@ def grab_state_matrix(matrix):
     # Reshape into 4x4 matrix
     rho = rho.reshape((4,4))  
     return rho
-    
+
 def plot_density_matrix(rho):
 
     n = rho.shape[0]
@@ -867,6 +923,45 @@ def parse_pulse_experiments(filepath: str, pulse_name: str) -> list[dict]:
 
     return results
 
+def parse_swap_test_experiments(filepath: str, pulse_name: str) -> list[dict]:
+    """
+    Parse SWAP test log entries. Handles state labels like |+0>, |00>+|10>, etc.
+    """
+    with open(filepath, "r", encoding="utf-8") as f:
+        log_text = f.read()
+
+    pulse_header = r'PULSE:\s*'
+    pulse_pattern = rf'{pulse_header}{re.escape(pulse_name)}(?!\S)\s*\n(.*?)(?={pulse_header}|\Z)'
+    pulse_match = re.search(pulse_pattern, log_text, re.DOTALL)
+
+    if not pulse_match:
+        print(f"Pulse '{pulse_name}' not found in '{filepath}'.")
+        return []
+
+    block = pulse_match.group(1)
+
+    state_match    = re.search(r'Estado inicial:\s*(\S+)', block)
+    expected_match = re.search(r'Estado esperado:\s*(\S+)', block)
+    matrix_match   = re.search(r"matrix:\s*(\{.*?\})\s*\n", block)
+    prob_match     = re.search(r"probability:\s*(\[.*?\])\s*\n", block)
+
+    if not all([state_match, expected_match, matrix_match, prob_match]):
+        print(f"Could not fully parse block for '{pulse_name}'.")
+        return []
+
+    return [{
+        "initial_state":  state_match.group(1),
+        "expected_state": expected_match.group(1),
+        "matrix":         ast.literal_eval(matrix_match.group(1)),
+        "probability":    ast.literal_eval(prob_match.group(1)),
+    }]
+
+def get_state(label: str) -> np.ndarray:
+    """Return the state vector for a single-qubit label: '0', '1', '+', or '-'."""
+    if label not in SINGLE_STATES:
+        raise ValueError(f"Unknown state label '{label}'. Must be one of {list(SINGLE_STATES.keys())}.")
+    return SINGLE_STATES[label]
+
 def calc_CNOT_fidelity(experiments: list[dict]) -> float:
     """
     Calculate experimental gate fidelity from the 4 state experiments.
@@ -947,3 +1042,56 @@ def calc_fidelity_from_matrix(experiments: list[dict], U_target: np.ndarray) -> 
     fidelity = total / len(experiments)
     print(f"Experimental Gate Fidelity (trace): {fidelity:.6f}")
     return fidelity
+
+def calc_swap_test_overlap(probability: list[float]) -> float:
+    """
+    Compute |<psi|phi>|^2 from a destructive SWAP test measurement.
+    
+    The SWAP test circuit (CNOT + Hadamard on control) maps:
+        P(|11>) = (1 - |<psi|phi>|^2) / 2
+    
+    So:
+        |<psi|phi>|^2 = 1 - 2*P(|11>)
+    
+    Args:
+        probability: list of 4 floats [P(00), P(01), P(10), P(11)]
+    
+    Returns:
+        overlap: |<psi|phi>|^2, the squared scalar product between the two input states.
+    """
+    p_11 = probability[3]
+    overlap = 1 - 2 * p_11
+    
+    print(f"P(|11>) = {p_11:.6f}")
+    print(f"|<psi|phi>|^2 = {overlap:.6f}")
+    
+    return overlap
+
+def expected_overlap(initial_state: str) -> float:
+    """
+    Compute the theoretical |<psi|phi>|^2 for a SWAP test initial state string.
+    
+    Args:
+        initial_state: e.g. '|+0>', '|01>', '|+->', etc. 
+                        First character = psi, second character = phi.
+    
+    Returns:
+        |<psi|phi>|^2 as a float.
+    """
+    # Strip the |...> notation
+    labels = initial_state.strip("|>")
+    
+    if len(labels) != 2:
+        raise ValueError(f"Expected exactly 2 single-qubit labels in '{initial_state}', got '{labels}'.")
+    
+    psi_label, phi_label = labels[0], labels[1]
+    psi = get_state(psi_label)
+    phi = get_state(phi_label)
+    
+    inner_product = np.vdot(psi, phi)  # <psi|phi>
+    overlap = np.abs(inner_product)**2
+    
+    print(f"|<{psi_label}|{phi_label}>|^2 = {overlap:.6f}")
+    
+    return overlap
+

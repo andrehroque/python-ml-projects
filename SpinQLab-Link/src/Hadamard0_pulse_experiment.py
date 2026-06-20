@@ -31,10 +31,10 @@ def main():
     EXPECTED_STATE = HADAMARD0_TRUTH_TABLE[INITIAL_STATE]
     STATE_PREP = {
     "|00>": [],
-    "|01>": [Pulse(path=1, width=90, amplitude=100, phase=90, detuning=0)],
-    "|10>": [Pulse(path=0, width=90, amplitude=100, phase=90, detuning=0)],
-    "|11>": [Pulse(path=1, width=90, amplitude=100, phase=90, detuning=0),
-             Pulse(path=0, width=90, amplitude=100, phase=90, detuning=0)],
+    "|01>": [Pulse(path=1, width=80, amplitude=100, phase=90, detuning=0)],
+    "|10>": [Pulse(path=0, width=80, amplitude=100, phase=90, detuning=0)],
+    "|11>": [Pulse(path=1, width=80, amplitude=100, phase=90, detuning=0),
+             Pulse(path=0, width=80, amplitude=100, phase=90, detuning=0)],
     }
     # Circuit layer experiment creates pps automatically
 
