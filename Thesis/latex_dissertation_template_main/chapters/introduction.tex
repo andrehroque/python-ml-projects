@@ -1,0 +1,90 @@
+\section{Motivation}
+
+Over the past three decades, quantum technologies have experienced explosive growth, driven by fundamental advances in quantum mechanics and experimental quantum control. Today, it is possible to manipulate, control, and measure individual quantum systems with remarkable precision, enabling a wide range of emerging technologies.
+
+Among these are quantum computing, quantum communication and cryptography, quantum simulation, quantum metrology, and quantum sensing. Although these fields target different applications, they all make use of uniquely quantum phenomena, such as superposition and entanglement, to approach certain tasks in ways that are classically impossible. The present work is situated within the field of quantum computing, whose objective is to harness these quantum effects to implement computational algorithms that are more efficient than their classical counterparts.
+
+The experimental platform considered in this work is a liquid-state \ac{nmr} quantum computer that provides direct low-level access to the radio-frequency control pulses that manipulate the qubits. This allows for custom quantum gates to be designed and experimentally implemented, making the platform particularly valuable both as a research tool and as an educational resource, enabling the connection between the theoretical description of quantum algorithms and their physical realization.
+
+From an educational perspective, an in-depth understanding of the operation of the \ac{nmr} quantum computer provides students with practical experience in quantum control, pulse sequence design, and experimental quantum information processing. From a research perspective, the platform enables the development and validation of new control techniques, quantum algorithms, and experimental demonstrations in areas including quantum computing, experimental physics, theoretical physics, and molecular chemistry.
+
+For these reasons, the characterization of the quantum computer’s operation must naturally be the first step. Understanding the performance and limitations of the system is essential for determining which quantum operations can be implemented reliably and for identifying the sources of experimental error that limit gate performance. Such characterization also provides a quantitative basis for evaluating future improvements in pulse optimization and hardware calibration.
+
+In this work, this characterization is carried out using \emph{Bargmann invariants} as a benchmarking tool. Since Bargmann invariants depend on the relative geometric phase accumulated by multiple quantum states, they are particularly sensitive to imperfections in quantum operations while remaining independent of global phase. Their measurement therefore provides a strict experimental test of the accuracy of implemented control pulses and offers a practical metric for assessing the performance of the \ac{nmr} quantum computing platform.
+
+\section{State of the Art}
+
+\subsection{Quantum computation in NMR}
+
+Nuclear Magnetic Resonance (NMR) was one of the earliest experimental platforms for quantum computing. Research in this area began around 1997, and it was shown to satisfy the conditions later formalized as the DiVincenzo criteria for quantum computation~\cite{DiVincenzo_2000, Cory_1998_first}. The criteria, and the reasons why they are satisfied, are as follows:
+
+\begin{enumerate}
+\item A scalable system with well-characterized qubits\\
+NMR systems use spin-1/2 nuclei to represent each qubit. The molecules containing the qubits are placed in a liquid solution, to which a strong constant magnetic field is applied. The splitting of the energy levels due to the Zeeman effect provides the logical states $\lvert 0 \rangle$ and $\lvert 1 \rangle$.
+
+\item Ability to initialize the qubits to a known fiducial state\\
+In other technologies, initialization is commonly achieved by cooling the system to its ground state, $\lvert 000\dots \rangle$. In liquid-state NMR, such cooling is not possible because the sample must remain \emph{in the liquid state}. The alternative is to initialize the system in a known pseudo-pure state, which can be treated as a pure state of the form $\lvert 000\dots \rangle$, but with only a significantly smaller fraction of the total population of the sample.
+
+\item Long decoherence times\\
+According to DiVincenzo, the fastest relaxation time should be $10^4$ to $10^5$ times longer than the operation times of the phenomena used as quantum gates~\cite{DiVincenzo_2000}. In liquid-state NMR, decoherence times are on the order of seconds, while the operation times of quantum gates, implemented through interactions between different intramolecular spins, are on the order of microseconds, thus satisfying this criterion.
+
+\item Implementation of a universal set of quantum gates\\
+In NMR implementations, through single-spin rotations about axes in the $xy$ plane of the Bloch sphere, together with periods of free evolution under coupling interactions, it is possible to approximate any desired evolution or operation on the spins of the system. This makes the definition of a universal set of gates possible.
+
+\item Ability to measure each specific qubit\\
+The measurement of the spin state is obtained from the NMR spectrum, resulting from the application of the corresponding excitation pulses. Considering that the sample is generally at room temperature, what is obtained is an average over the spin states of each molecule in the ensemble, represented by a density matrix.
+
+\end{enumerate}
+
+For several years, NMR-based quantum computing led experimental development in the field, culminating in the first implementation of Shor’s algorithm, carried out on a 7-qubit NMR system~\cite{Vandersypen2001ShorNMR}. This marked an important milestone on the path toward demonstrating quantum supremacy.
+
+However, progress slowed as the intrinsic limitations of the technique, already anticipated at the beginning of its development~\cite{Warren1997Usefulness}, began to be reached. The main limiting factor is its severely restricted scalability. To use a system with a larger number of qubits, one requires a molecule in a liquid-state solution containing the same number of spin-active nuclei, with sufficiently large energy-level separations to allow individual distinction and addressing. As a result, viable systems are limited to approximately 12 to 15 qubits, which is insufficient for more complex circuits and operations.
+
+In addition, these systems require initialization into a pseudo-pure state, since the sample cannot be cooled to reach a true pure ground state. Because only a small fraction of the total sample population is effectively used, the intensity of the output signal is further reduced, once again making individual distinction and addressing in more complex systems more difficult.
+
+At present, NMR quantum computing has been surpassed in speed and precision by trapped-ion systems~\cite{Bermudez2017Trappedions, Schafer2018FastIons}, and in terms of scalability by superconducting platforms~\cite{Arute2019QuantumSupremacy, Castelvecchi2023IBM1000Qubit}. Today, the value of the platform lies in its accessibility for research and the testing of theoretical models, since pulse modulation for controlling quantum states is already a well-studied subject and shares several aspects analogous to quantum control techniques used in other quantum computing platforms.
+
+\subsection{Implementation of the Fredkin quantum gate/ swap test}
+
+swap test\cite{liu2022multistateswaptestalgorithm}
+
+\begin{figure}[h]
+\centering
+\scalebox{1.2}{
+\Qcircuit @C=1.0em @R=0.3em @!R { \\
+                \nghost{{q}_{0}:  } & \lstick{{q}_{0}:  } & \gate{\mathrm{H}} & \ctrl{1} & \gate{\mathrm{H}} & \meter & \qw\\
+                \nghost{{q}_{1}:  } & \lstick{{q}_{1}:  } & \qw & \qswap & \qw & \qw & \qw\\
+                \nghost{{q}_{2}:  } & \lstick{{q}_{2}:  } & \qw & \qswap \qwx[-1] & \qw & \qw & \qw\\
+\\ }}
+\caption{Conventional SWAP test}
+\end{figure}
+
+The controlled-SWAP gate, or Fredkin gate, was first defined by Edward Fredkin and Tommaso Toffoli in their paper \emph{“Conservative Logic”}~\cite{Fredkin1982Conservative}. The authors proposed a new methodology for classical computation, grounded in microscopic physical principles, aiming to improve the efficiency and performance of computational processes by introducing concepts such as reversible logic and conservative logic. They presented a paradigm shift from computation based on macroscopic physical axioms to a model in which computational processes more directly reflect the mechanisms of the underlying physical systems, such as the conservation of information and energy. Since quantum computing shares these same fundamental principles, the quantum implementation of the Fredkin gate, as well as the Toffoli gate, can be seen as a natural step in the development of quantum logic gates.
+
+The Fredkin gate is a three-qubit gate that swaps the states of the two target qubits, conditioned on the state of the control qubit. It is a reversible gate, meaning that the information contained in the input signals can be fully recovered from the output signals, in accordance with the principles of conservative logic: information preservation and minimization of dissipated energy. Furthermore, when combined with the Hadamard quantum gate, it forms a universal set of quantum gates, allowing any computational operation to be decomposed into a circuit composed of just these two logical gates.
+
+Several proposals and implementations of the Fredkin gate have been made across multiple quantum computing platforms. The first approach involved decomposing the gate operation into a set of two-qubit gates. This was demonstrated in 1996 and later proven, in 2015, to be optimized, with the minimum number of gates required being five~\cite{smolin1996five, yu2015optimal}. From this perspective, theoretical proposals were made for implementing the Fredkin gate in photonic quantum systems~\cite{fiuravsek2006linear, gong2008methods}, with the first experimental demonstration occurring in 2016. This demonstration introduced a control qubit into the unitary operation that swaps the states of the pair of target qubits, resulting in the controlled-SWAP operation~\cite{patel2016quantumfredkin}.
+
+A second approach, aimed at minimizing unnecessary operations, computational errors, and energy dissipation/costs, especially with large-scale quantum computing in mind, focused on implementing the Fredkin gate in a single step. In this approach, a single control Hamiltonian is applied to the three-qubit system to directly realize the desired logical operation. Theoretical proposals from 2012 and 2020 suggest using the quantum Zeno effect in systems of atoms trapped in optical cavities, to prevent unwanted transitions through frequent measurements and thereby simplify the resulting Hamiltonian~\cite{shi2012onestepimplementationfredkingate, Zhang2020FredkinPath}.
+
+Finally, in NMR-based systems, this second approach is implemented by optimizing the parameters of control pulse sequences, which effectively corresponds to applying a control Hamiltonian to the spin-bearing atoms to approximate the system’s evolution to the desired Fredkin gate operation~\cite{Devra2018Efficient}.
+
+\subsection{Bargmann Invariants}
+
+Bargmann invariants were introduced by Valentine Bargmann in his analysis of Wigner’s theorem on symmetry operations in quantum systems~\cite{bargmann1964note}. They are gauge-invariant quantities defined through cyclic overlaps of quantum state vectors. Represented as complex numbers, they are independent of any arbitrary choice of reference phase, allowing for the direct assessment of properties of the quantum state space itself~\cite{Pratapsi2025elementary, zhang2026survey}.
+
+Their measurement is therefore useful both for the fundamental characterization of a given quantum state and for practical applications in quantum physics and quantum information science. Examples include comparing two quantum states to verify their local equivalence or detecting quantum entanglement between states without relying on full quantum state tomography~\cite{zhang2025bargmannentanglement}.
+
+Measurement of Bargmann invariants, for both pure and mixed quantum states, can be performed using \emph{cycle}-tests, which are based on \emph{SWAP}-tests, employing Hadamard gates and multiple Fredkin gates to swap and measure the quantum states~\cite{oszmaniec2021measuringrelationalinformationquantum}.
+
+
+
+\subsection{SPINQ Gemini Lab}
+
+Para acrescentar contexto à informação que se segue, o sistema físico consiste num par de ímanes estáticos de neodímio que criam um campo magnético intenso de \SI{0.65}{\tesla}, mantido constante e homogéneo por shimming. A amostra encontra-se num pequeno tubo de ensaio inserido no centro do campo magnético, e envolvido por uma bobina utilizada para a criação dos pulsos de radiofrequência de controlo por indução eletromagnética.
+
+\section{Objective}
+
+Experimental measurement of Bargmann invariants, as described by Sagar Pratapsi et al.~\cite{Pratapsi2025elementary}, using a three-qubit NMR-based quantum computer, through the implementation of \emph{SWAP}-tests and \emph{cycle}-test circuits, employing Hadamard and Fredkin gates for this purpose.
+
+This project aims to evaluate the practical limitations of experimentally measuring Bargmann invariants in quantum systems based on NMR technology. In addition, it seeks to develop a performance characterization tool that is both useful and practical for quantum computers, extending beyond the specific three-qubit machine used in this work.

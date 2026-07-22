@@ -75,8 +75,11 @@ H_x_H = 2*np.pi*w1_max*(Ix1)
 H_x_P = 2*np.pi*w1_max*(Ix2)
 H_y_H = 2*np.pi*w1_max*(Iy1)
 H_y_P = 2*np.pi*w1_max*(Iy2)
+XX = np.kron(X, X)
+YY = np.kron(Y, Y)
 ZZ = np.kron(Z, Z)
 H_J = 2*np.pi*J*(ZZ/4)
+# H_J = 2*np.pi*J*((XX+YY+ZZ)/4)
 
 # H_0 = 0 because working on resonance. Only include when detuning or counteracting chemical shift mismatch
 

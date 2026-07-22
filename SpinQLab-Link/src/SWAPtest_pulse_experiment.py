@@ -8,9 +8,10 @@ def main():
     # Create connection
     
     # DF ID: 192.168.4.34
+    # new DF ID: 192.168.35.101
     # DEEC ID: 10.206.88.204
     
-    spinqlablink = SpinQLabLink("10.206.88.204", 8181, "andreroque", "anyword")
+    spinqlablink = SpinQLabLink("192.168.35.101", 8181, "andreroque", "anyword")
     spinqlablink.connect()
 
     if not spinqlablink.wait_for_login():
@@ -24,12 +25,24 @@ def main():
         # "pulses/Hadamard0/Hadamard0_tstudy10.json"
         ]
     LOG_FILE       = "data/SWAPtest_logs.txt"
-    INITIAL_STATE  = "|11>" # Change this to test gate for each initial state
+    INITIAL_STATE  = "|1->" # Change this to test gate for each initial state
     SWAPTEST_TRUTH_TABLE = {
-    "|00>": "|00>+|10>",
-    "|01>": "|01>+|11>",
-    "|10>": "|01>-|11>",
-    "|11>": "|00>-|10>",
+    "|00>": "0",
+    "|01>": "0.5",
+    "|10>": "0.5",
+    "|11>": "0",
+    "|+0>": "0.25",
+    "|-0>": "0.25",
+    "|+1>": "0.25",
+    "|-1>": "0.25",
+    "|0+>": "0.25",
+    "|0->": "0.25",
+    "|1+>": "0.25",
+    "|1->": "0.25",
+    "|++>": "0",
+    "|-->": "0",
+    "|+->": "0.5",
+    "|-+>": "0.5",
     }
     EXPECTED_STATE = SWAPTEST_TRUTH_TABLE[INITIAL_STATE]
     STATE_PREP = {
@@ -38,7 +51,52 @@ def main():
     "|10>": [Pulse(path=0, width=80, amplitude=100, phase=90, detuning=0)],
     "|11>": [Pulse(path=1, width=80, amplitude=100, phase=90, detuning=0),
              Pulse(path=0, width=80, amplitude=100, phase=90, detuning=0)],
+    "|+0>":[Pulse(path=0, width=40, amplitude=100, phase=90, detuning=0),
+            Pulse(path=0, width=80, amplitude=100, phase=0, detuning=0)],
+    "|+1>":[Pulse(path=0, width=40, amplitude=100, phase=90, detuning=0),
+            Pulse(path=0, width=80, amplitude=100, phase=0, detuning=0),
+            Pulse(path=1, width=80, amplitude=100, phase=90, detuning=0)],
+    "|-0>":[Pulse(path=0, width=80, amplitude=100, phase=90, detuning=0),
+            Pulse(path=0, width=40, amplitude=100, phase=90, detuning=0),
+            Pulse(path=0, width=80, amplitude=100, phase=0, detuning=0)],
+    "|-1>":[Pulse(path=1, width=80, amplitude=100, phase=90, detuning=0),
+            Pulse(path=0, width=80, amplitude=100, phase=90, detuning=0),
+            Pulse(path=0, width=40, amplitude=100, phase=90, detuning=0),
+            Pulse(path=0, width=80, amplitude=100, phase=0, detuning=0)],
+    "|0+>":[Pulse(path=1, width=40, amplitude=100, phase=90, detuning=0),
+            Pulse(path=1, width=80, amplitude=100, phase=0, detuning=0)],
+    "|1+>":[Pulse(path=0, width=80, amplitude=100, phase=90, detuning=0),
+            Pulse(path=1, width=40, amplitude=100, phase=90, detuning=0),
+            Pulse(path=1, width=80, amplitude=100, phase=0, detuning=0)],
+    "|0->":[Pulse(path=1, width=80, amplitude=100, phase=90, detuning=0),
+            Pulse(path=1, width=40, amplitude=100, phase=90, detuning=0),
+            Pulse(path=1, width=80, amplitude=100, phase=0, detuning=0)],
+    "|1->":[Pulse(path=0, width=80, amplitude=100, phase=90, detuning=0),
+            Pulse(path=1, width=80, amplitude=100, phase=90, detuning=0),
+            Pulse(path=1, width=40, amplitude=100, phase=90, detuning=0),
+            Pulse(path=1, width=80, amplitude=100, phase=0, detuning=0)],
+    "|++>":[Pulse(path=0, width=40, amplitude=100, phase=90, detuning=0),
+            Pulse(path=0, width=80, amplitude=100, phase=0, detuning=0),
+            Pulse(path=1, width=40, amplitude=100, phase=90, detuning=0),
+            Pulse(path=1, width=80, amplitude=100, phase=0, detuning=0)],
+    "|+->":[Pulse(path=1, width=80, amplitude=100, phase=90, detuning=0),
+            Pulse(path=0, width=40, amplitude=100, phase=90, detuning=0),
+            Pulse(path=0, width=80, amplitude=100, phase=0, detuning=0),
+            Pulse(path=1, width=40, amplitude=100, phase=90, detuning=0),
+            Pulse(path=1, width=80, amplitude=100, phase=0, detuning=0)],
+    "|-+>":[Pulse(path=0, width=80, amplitude=100, phase=90, detuning=0),
+            Pulse(path=0, width=40, amplitude=100, phase=90, detuning=0),
+            Pulse(path=0, width=80, amplitude=100, phase=0, detuning=0),
+            Pulse(path=1, width=40, amplitude=100, phase=90, detuning=0),
+            Pulse(path=1, width=80, amplitude=100, phase=0, detuning=0)],
+    "|-->":[Pulse(path=0, width=80, amplitude=100, phase=90, detuning=0),
+            Pulse(path=1, width=80, amplitude=100, phase=90, detuning=0),
+            Pulse(path=0, width=40, amplitude=100, phase=90, detuning=0),
+            Pulse(path=0, width=80, amplitude=100, phase=0, detuning=0),
+            Pulse(path=1, width=40, amplitude=100, phase=90, detuning=0),
+            Pulse(path=1, width=80, amplitude=100, phase=0, detuning=0)]
     }
+    
     # Circuit layer experiment creates pps automatically
 
     using_pulse = True
@@ -49,11 +107,10 @@ def main():
     
     if using_pulse:
         for pj in PULSE_JSONS:
-            
             pulse_sequence += load_pulses_from_json(pj)
         
-        # pulse_sequence = Hadamard0_sequence + pulse_sequence # Apply Hadamard to Q0
-        # pulse_sequence = Hadamard1_sequence + pulse_sequence # Apply Hadamard to Q1
+        # pulse_sequence = STATE_PREP[INITIAL_STATE] + Hadamard0_sequence + pulse_sequence # Apply Hadamard to Q0
+        # pulse_sequence = STATE_PREP[INITIAL_STATE] + Hadamard1_sequence + pulse_sequence # Apply Hadamard to Q1
         pulse_sequence = STATE_PREP[INITIAL_STATE] + pulse_sequence
         # pulse_sequence = pulse_sequence + Hadamard0_sequence
 
@@ -73,11 +130,11 @@ def main():
     else:
         circuit = Circuit(2)
         # circuit << Gate(type='H', qubitIndex=0)
-        circuit << Gate(type='X', qubitIndex=1)
-        circuit << Gate(type='X', qubitIndex=0)
-        circuit << Gate(type='CNOT', qubitIndex=1, controlQubit=0)
-        circuit << Gate(type='H', qubitIndex=0, timeslot=2)
-        # circuit << CustomGate(type='CNOT', customType='andre_custom_gate', pulses=pulse_sequence)
+        # circuit << Gate(type='X', qubitIndex=1)
+        # circuit << Gate(type='X', qubitIndex=0)
+        # circuit << Gate(type='CNOT', qubitIndex=1, controlQubit=0)
+        circuit << CustomGate(type='CNOT', customType='andre_custom_gate', pulses=pulse_sequence)
+        # circuit << Gate(type='H', qubitIndex=0, timeslot=2)
         # circuit << CustomGate(type='I', customType='andre_custom_gate', controlQubit=0, qubitIndex=1, gateJson=gate_from_json)
         # circuit << CustomGate(type='I', customType='I_custom_gate', qubitIndex=1, pulses=[Pulse(path=0, width = 80, amplitude = 100, phase = 90, detuning = 0)])
         circuit.print_circuit()
